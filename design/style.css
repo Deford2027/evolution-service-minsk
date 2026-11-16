@@ -309,7 +309,7 @@ h1, h2, h3, p { margin: 0; }
   .logo, .logo img { width: 104px; }
 
   /* Первый экран: заголовок → фото → кнопка → описание; H1 и кнопка видны без прокрутки */
-  .hero { min-height: 0; padding: 22px 18px 20px; display: grid; grid-template-areas: 'eb' 'h1' 'img' 'act' 'sub' 'foot'; }
+  .hero { min-height: 0; padding: 22px 18px 22px; display: grid; grid-template-areas: 'eb' 'h1' 'img' 'act' 'sub'; }
   .hero::after { display: none; }
   .hero__eyebrow { grid-area: eb; font-size: 11px; letter-spacing: 1.2px; }
   .hero h1 { grid-area: h1; margin-top: 18px; font-size: 34px; letter-spacing: -1.4px; line-height: 1.02; }
@@ -318,17 +318,20 @@ h1, h2, h3, p { margin: 0; }
   .hero__act .btn { min-width: 0; width: 100%; }
   .hero__more { justify-content: center; }
   .hero__sub { grid-area: sub; margin-top: 12px; font-size: 15px; line-height: 1.4; }
-  .hero__foot { grid-area: foot; padding-top: 18px; flex-direction: column; gap: 6px; }
-  .hero__tag { display: none; }
+  .hero__foot { display: none; }
+  .hero__eyebrow, .kicker { font-size: 13px; letter-spacing: 1px; }
+  .ask { font-size: 1em; }
+  .logo { display: flex; flex-direction: column; justify-content: center; min-height: 44px; }
 
   /* Марки: сетка 2 в ряд, вниз – короткие карточки-ссылки */
   .brands { gap: 10px; }
   .brand { min-height: 0; padding: 16px 14px; }
   .brand__name { font-size: 18px; padding-right: 22px; }
   .brand__go { top: 15px; right: 14px; font-size: 18px; }
-  .brand__models { margin-top: 8px; font-size: 13px; }
-  .brand__models a { padding: 6px 0; }
-  .brand__models a + a::before { padding: 0 6px; }
+  .brand__models { gap: 6px; margin-top: 10px; font-size: 13px; }
+  .brand__models a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 11px; border-radius: 8px; background: var(--white); color: var(--ink); }
+  .brand__models a + a::before { content: none; }
+  .brand--other .brand__models { font-size: 14px; }
   .note { font-size: 14px; }
 
   /* Ленты вбок: карточка 82 %, следующая выглядывает, счётчик снизу */
@@ -364,7 +367,8 @@ h1, h2, h3, p { margin: 0; }
   .cont__card { padding: 24px 18px; }
   .cont__card dl { grid-template-columns: 1fr; gap: 2px; }
   .cont__card dd { margin-bottom: 12px; }
-  .map { min-height: 240px; padding: 22px 18px; }
+  .map { min-height: 0; padding: 22px 18px; }
+  .map p { font-size: 14px; }
   .ftr__top { grid-template-columns: 1fr auto; }
   .ftr__bot { grid-template-columns: 1fr; }
 
