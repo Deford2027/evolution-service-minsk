@@ -129,7 +129,7 @@ h1, h2, h3, p { margin: 0; }
 
 /* ── Диагностика */
 .diag { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-.diag__img { border-radius: 18px; width: 100%; aspect-ratio: 624 / 462; object-fit: cover; cursor: zoom-in; }
+.diag__img { border-radius: 18px; width: 100%; height: auto; aspect-ratio: 624 / 462; object-fit: cover; cursor: zoom-in; }
 .diag__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0 32px; }
 .fact { padding: 18px 20px; border-radius: var(--r-m); background: var(--soft); }
 .fact small { display: block; font-size: 13px; color: var(--muted); }
@@ -138,6 +138,7 @@ h1, h2, h3, p { margin: 0; }
 /* Формы */
 .form { display: grid; gap: 20px; }
 .form--row { grid-template-columns: 1fr auto; align-items: end; gap: 16px; }
+.form--row .agree, .form--row .hint, .form--row .ok { grid-column: 1 / -1; }
 .fld { display: block; }
 .fld span { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
 .fld input, .fld textarea { width: 100%; padding: 10px 0 12px; border: 0; border-bottom: 1px solid #c9ccc9; background: transparent; font-size: 16px; outline: none; transition: border-color .2s; }
@@ -238,14 +239,15 @@ h1, h2, h3, p { margin: 0; }
 .cont__card dd { margin: 0; }
 .cont__card dd a { text-decoration: underline; text-underline-offset: 3px; }
 .map { position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 16px; min-height: 360px; padding: 32px; border-radius: var(--r-xl); overflow: hidden; color: var(--white);
-  background: #23282a radial-gradient(circle at 62% 42%, rgba(174,88,46,.55) 0 7px, rgba(174,88,46,.18) 8px 26px, transparent 27px),
+  background-color: #23282a;
+  background-image: radial-gradient(circle at 62% 42%, rgba(174,88,46,.55) 0 7px, rgba(174,88,46,.18) 8px 26px, transparent 27px),
     repeating-linear-gradient(28deg, transparent 0 46px, rgba(255,255,255,.05) 46px 48px),
     repeating-linear-gradient(-62deg, transparent 0 70px, rgba(255,255,255,.05) 70px 72px); }
 .map p { font-size: 15px; color: var(--dark-muted); max-width: 360px; }
 .map .btn { align-self: flex-start; }
 
 /* ── Подвал (макет 1:652) */
-.ftr { margin-top: 96px; background: var(--soft); padding: 38px 0 32px; }
+.ftr { background: var(--soft); padding: 38px 0 32px; }
 .ftr__top { display: grid; grid-template-columns: 408px 1fr auto; gap: 24px 0; padding-bottom: 32px; border-bottom: 1px solid #dde0dd; }
 .ftr__logo b { display: block; font: 600 34px/1.2 var(--font); }
 .ftr__logo small { display: block; margin-top: 6px; font: 500 10px/1.4 var(--font); letter-spacing: 3px; color: #626567; }
@@ -264,7 +266,7 @@ h1, h2, h3, p { margin: 0; }
 .lb__x { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--white); cursor: pointer; font-size: 26px; line-height: 1; }
 
 /* ── Таб-бар и окно «Связаться» (только телефон) */
-.tab, .sheet { display: none; }
+.tab, .sheet, .cnt { display: none; }
 
 /* Плавное появление блоков без сдвига вёрстки */
 .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
@@ -363,7 +365,6 @@ h1, h2, h3, p { margin: 0; }
   .cont__card dl { grid-template-columns: 1fr; gap: 2px; }
   .cont__card dd { margin-bottom: 12px; }
   .map { min-height: 240px; padding: 22px 18px; }
-  .ftr { margin-top: 64px; }
   .ftr__top { grid-template-columns: 1fr auto; }
   .ftr__bot { grid-template-columns: 1fr; }
 
