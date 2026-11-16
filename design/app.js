@@ -4,11 +4,15 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
   // Меню на узких экранах
-  var hdr = $('.hdr'), burger = $('.burger');
+  var hdr = $('.hdr'), burger = $('.menu-btn');
   if (burger) burger.addEventListener('click', function () {
     var o = hdr.classList.toggle('open'); burger.setAttribute('aria-expanded', o);
   });
-  $$('.nav a').forEach(function (a) { a.addEventListener('click', function () { hdr.classList.remove('open'); }); });
+  $$('.mnu a').forEach(function (a) { a.addEventListener('click', function () { hdr.classList.remove('open'); }); });
+  document.addEventListener('click', function (e) { if (!hdr.contains(e.target)) hdr.classList.remove('open'); });
+  // Шапка – стекло на первом экране, зелёная заливка ниже
+  function solid() { hdr.classList.toggle('solid', window.scrollY > 120); }
+  window.addEventListener('scroll', solid, { passive: true }); solid();
 
   // Маска телефона Беларуси: +375 (XX) XXX-XX-XX
   function mask(v) {
