@@ -56,8 +56,9 @@ a:hover .go, .go:hover { background: var(--green2); transform: translate(1px,-1p
 .hdr { position: fixed; z-index: 60; top: 20px; left: 0; right: 0; pointer-events: none; }
 .hdr__in { pointer-events: auto; display: flex; align-items: center; gap: 14px; height: 70px; padding: 0 17px; border-radius: 10px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); color: #fff; transition: background .3s, border-color .3s; }
 .hdr.solid .hdr__in { background: rgba(11,68,66,.94); border-color: rgba(255,255,255,.08); }
-.logo { display: flex; flex-direction: column; gap: 4.5px; justify-content: center; min-height: 44px; margin-right: auto; }
-.logo img { width: 118px; height: auto; }
+.logo { display: flex; align-items: center; min-height: 44px; margin-right: auto; }
+.logo picture { display: block; }
+.logo img { display: block; height: 18px; width: auto; }
 .circ { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(195,212,233,.4); color: #fff; transition: background .2s; }
 .circ:hover { background: rgba(255,255,255,.12); }
 .circ svg { width: 19px; height: 19px; }
@@ -268,8 +269,8 @@ a:hover .go, .go:hover { background: var(--green2); transform: translate(1px,-1p
 .ftr { padding: 15px 0 30px; }
 .ftr__in { padding: 30px 30px 24px; border-radius: var(--r); background: #fff; }
 .ftr__top { display: flex; align-items: center; gap: 20px 30px; flex-wrap: wrap; padding-bottom: 28px; }
-.ftr__logo img { width: 118px; height: auto; }
-.ftr__logo img + img { margin-top: 4.5px; }
+.ftr__logo { flex: none; width: 240px; max-width: 100%; }
+.ftr__logo img { display: block; width: 100%; height: auto; }
 .ftr__nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 auto; }
 .ftr__nav a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 20px; border: 1px solid var(--line); font-size: 13px; color: var(--ink2); }
 .ftr__nav a:hover { border-color: var(--green); }
@@ -317,7 +318,7 @@ a:hover .go, .go:hover { background: var(--green2); transform: translate(1px,-1p
   .hdr { top: 8px; }
   .hdr .wrap { padding: 0 8px; }
   .hdr__in { height: 60px; padding: 0 8px 0 12px; gap: 8px; }
-  .logo img { width: 100px; }
+  .logo img { height: 22px; }
   .hdr__tel { margin-left: 0; }
   .menu-btn { margin-left: 0; padding: 0 5px 0 12px; gap: 8px; }
 
