@@ -321,6 +321,7 @@ h1, h2, h3, p { margin: 0; }
   .hero__foot { display: none; }
   .hero__eyebrow, .kicker { font-size: 13px; letter-spacing: 1px; }
   .ask { font-size: 1em; }
+  .ph__tag, .book .fld span, .ftr__bot { font-size: 13px; }
   .logo { display: flex; flex-direction: column; justify-content: center; min-height: 44px; }
 
   /* Марки: сетка 2 в ряд, вниз – короткие карточки-ссылки */
