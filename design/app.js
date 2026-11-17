@@ -9,7 +9,7 @@
     var o = hdr.classList.toggle('open'); burger.setAttribute('aria-expanded', o);
   });
   $$('.mnu a').forEach(function (a) { a.addEventListener('click', function () { hdr.classList.remove('open'); }); });
-  document.addEventListener('click', function (e) { if (!hdr.contains(e.target)) hdr.classList.remove('open'); });
+  document.addEventListener('click', function (e) { if (!hdr.contains(e.target)) { hdr.classList.remove('open'); if (burger) burger.setAttribute('aria-expanded', false); } });
   // Шапка – стекло на первом экране, зелёная заливка ниже
   function solid() { hdr.classList.toggle('solid', window.scrollY > 120); }
   window.addEventListener('scroll', solid, { passive: true }); solid();
@@ -17,7 +17,8 @@
   // Маска телефона Беларуси: +375 (XX) XXX-XX-XX
   function mask(v) {
     var d = v.replace(/\D/g, '');
-    if (d.indexOf('375') === 0) d = d.slice(3); else if (d.indexOf('80') === 0) d = d.slice(2);
+    while (d.indexOf('375') === 0) d = d.slice(3);
+    if (d.indexOf('80') === 0) d = d.slice(2);
     d = d.slice(0, 9);
     var out = '+375';
     if (d.length) out += ' (' + d.slice(0, 2);
@@ -25,17 +26,23 @@
     if (d.length > 2) out += ' ' + d.slice(2, 5);
     if (d.length > 5) out += '-' + d.slice(5, 7);
     if (d.length > 7) out += '-' + d.slice(7, 9);
-    return { text: out, full: d.length === 9 };
+    return { text: out, full: d.length === 9, d: d };
   }
   $$('form[data-form]').forEach(function (f) {
     var tel = $('[data-mask]', f), agree = $('[data-agree]', f), btn = $('button[type=submit]', f);
-    function check() { btn.disabled = !(agree.checked && mask(tel.value).full); }
+    function check() { btn.disabled = !(agree.checked && mask(tel.value).full); btn.title = btn.disabled ? 'Введите номер полностью и отметьте согласие' : ''; }
+    var prev = '';
     tel.addEventListener('focus', function () { if (!tel.value) tel.value = '+375 ('; });
-    tel.addEventListener('input', function () { tel.value = mask(tel.value).text; check(); });
+    tel.addEventListener('input', function (e) {
+      var m = mask(tel.value);
+      if (e && e.inputType === 'deleteContentBackward' && m.text === prev) m = mask('+375' + m.d.slice(0, -1));
+      tel.value = prev = m.text; check();
+    });
     tel.addEventListener('blur', function () { if (tel.value === '+375 (' || tel.value === '+375') tel.value = ''; });
     agree.addEventListener('change', check);
     // Дизайн-макет: заявка никуда не уходит, показываем экран «Заявка принята»
-    f.addEventListener('submit', function (e) { e.preventDefault(); if (!btn.disabled) f.classList.add('sent'); });
+    f.addEventListener('submit', function (e) { e.preventDefault(); if (btn.disabled) return; f.classList.add('sent');
+      var ok = $('.ok', f); if (ok) { ok.tabIndex = -1; ok.focus({ preventScroll: true }); ok.scrollIntoView({ block: 'center' }); } });
   });
 
   // Ленты вбок: счётчик «N / всего» и точки
@@ -71,7 +78,7 @@
   function lbSet(src, alt) { if (src) { lbImg.src = src; lbImg.alt = alt || ''; } lb.classList.toggle('open', !!src); lb.setAttribute('aria-hidden', !src); document.body.style.overflow = src ? 'hidden' : ''; }
   $$('[data-zoom]').forEach(function (img) { img.addEventListener('click', function () { lbSet(img.currentSrc || img.src, img.alt); }); });
   lb.addEventListener('click', function (e) { if (e.target !== lbImg) lbSet(null); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { lbSet(null); sheetSet(false); hdr.classList.remove('open'); } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { lbSet(null); sheetSet(false); hdr.classList.remove('open'); if (burger) burger.setAttribute('aria-expanded', false); } });
 
   // Появление блоков: только прозрачность и сдвиг, вёрстка не прыгает
   var rv = $$('.rv');
