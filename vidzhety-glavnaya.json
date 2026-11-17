@@ -4,7 +4,7 @@
  "consent": false,
  "endpoint": "demo:",
  "tz": 3,
- "agreement": "/evolution-service-minsk-proto/privacy-policy/",
+ "agreement": "/evolution-service-minsk/privacy-policy/",
  "widgets": [
   {
    "id": "uhod",
