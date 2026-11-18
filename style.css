@@ -582,3 +582,8 @@ html.anim .a-in.is-in { opacity: 1; transform: none; }
   .hdr__soc { gap: 6px; margin-left: 0; }
   .hdr__soc .circ { width: 40px; height: 40px; }
 }
+
+/* Значки в шапке – с заливкой */
+.hdr .circ { background: var(--green); border-color: var(--green); color: #fff; }
+.hdr a.circ:hover { background: var(--green2); border-color: var(--green2); }
+.hdr__soc a[href*="t.me"] svg, .ftr__soc a[href*="t.me"] svg { transform: translateX(-1px); }
