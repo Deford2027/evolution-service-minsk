@@ -237,6 +237,28 @@
     if (d.open) d.classList.add('is-open');
   });
 
+  // Анимация 2: заголовки и фото со своим эффектом, параллакс первого экрана
+  if (!reduce) {
+    $$('.h2, .w-block h2, .w-block .w-title').forEach(function (h) { if (!h.closest('.hero, .hero--in, .pop')) h.classList.add('a-ttl'); });
+    $$('.w-photo, .work__ph, .split__img, .why__img').forEach(function (p) { if (!p.closest('.hero, .pop')) p.classList.add('a-pic'); });
+    if ('IntersectionObserver' in window) {
+      var tio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); tio.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+      $$('.a-ttl, .a-pic').forEach(function (el) { tio.observe(el); });
+    }
+    var heroEl = $('.hero'), heroImg = heroEl && $('.hero__img', heroEl), ticking = false;
+    if (heroEl && heroImg) {
+      var par = function () {
+        ticking = false;
+        var y = window.scrollY, h = heroEl.offsetHeight;
+        if (y > h) return;
+        heroEl.style.setProperty('--py', (y * .3).toFixed(1) + 'px');
+        heroEl.style.setProperty('--ho', Math.max(0, 1 - y / (h * .8)).toFixed(3));
+      };
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(par); } }, { passive: true });
+      par();
+    }
+  }
+
   // Появление блоков: только прозрачность и сдвиг, вёрстка не прыгает
   var rv = $$('.rv');
   if ('IntersectionObserver' in window) {

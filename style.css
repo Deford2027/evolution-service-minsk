@@ -599,5 +599,50 @@ a[href*="t.me"].circ, a[href*="t.me"].ftr-ic { --s: 1.12; }
 a[href*="t.me"].circ svg, a[href*="t.me"].ftr-ic svg { transform: translate(4%, 7%); }
 a[href*="wa.me"].circ, a[href*="wa.me"].ftr-ic { --s: .86; }
 a[href^="tel:"].circ { --s: 1.1; }
-a[href*="instagram"].ftr-ic { --s: 1.1; }
+a[href*="instagram"].ftr-ic { --s: .8; }
 a[href*="youtube"].ftr-ic { --s: .94; }
+
+/* ===== Анимация 2: заметнее, но спокойно ===== */
+/* появление блоков – больше сдвиг и лёгкий масштаб */
+.rv { transform: translateY(40px) scale(.98); transition: opacity .8s ease, transform 1s cubic-bezier(.16,.84,.24,1); }
+html.anim .a-in { transform: translateY(40px) scale(.98); transition: opacity .8s ease var(--d, 0s), transform 1s cubic-bezier(.16,.84,.24,1) var(--d, 0s); }
+/* заголовки выезжают из-под маски */
+html.anim .a-ttl { clip-path: inset(0 0 100% 0); transform: translateY(30px); opacity: 1; transition: clip-path 1s cubic-bezier(.16,.84,.24,1) var(--d, 0s), transform 1s cubic-bezier(.16,.84,.24,1) var(--d, 0s); }
+html.anim .a-ttl.is-in { clip-path: inset(0 0 -20% 0); transform: none; }
+/* фото раскрываются из рамки с наездом */
+html.anim .a-pic { clip-path: inset(10% 10% 10% 10% round 18px); transform: scale(1.12); opacity: 1; transition: clip-path 1.2s cubic-bezier(.16,.84,.24,1) var(--d, 0s), transform 1.4s cubic-bezier(.16,.84,.24,1) var(--d, 0s), filter .4s ease; }
+html.anim .a-pic.is-in { clip-path: inset(0 0 0 0 round 11px); transform: none; }
+/* первый экран: параллакс задаёт JS через --py */
+.hero__img { transform: translateY(var(--py, 0px)) scale(1.06); will-change: transform; transition: none; }
+.hero__txt, .hero__in { opacity: var(--ho, 1); transform: translateY(calc(var(--py, 0px) * -.25)); }
+@keyframes hero-img2 { from { transform: translateY(var(--py, 0px)) scale(1.16); } to { transform: translateY(var(--py, 0px)) scale(1.06); } }
+.hero__img { animation: hero-img2 2.2s cubic-bezier(.16,.84,.24,1) both; }
+/* кнопки: блик и стрелка */
+.btn { position: relative; overflow: hidden; isolation: isolate; }
+.btn::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.28) 50%, transparent 70%); transform: translateX(-120%); }
+.btn::after { transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+@media (hover: hover) {
+  .btn:hover::before { transform: translateX(120%); transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+  .btn:hover::after { transform: translateX(4px); }
+  .hdr a.circ:hover svg { animation: ic-wiggle .5s ease; }
+  .ftr__soc .ftr-ic:hover svg { animation: ic-wiggle .5s ease; }
+  .mk-tab:hover { transform: translateY(-3px); }
+}
+.mk-tab { transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .2s, box-shadow .2s; }
+@keyframes ic-wiggle { 0%,100% { transform: none; } 30% { transform: rotate(-12deg) scale(1.12); } 60% { transform: rotate(8deg) scale(1.06); } }
+/* смена марки во вкладках */
+@keyframes panel-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.mk-panel:not([hidden]) { animation: panel-in .5s cubic-bezier(.16,.84,.24,1); }
+.mk-panel:not([hidden]) .mk-m { animation: panel-in .5s cubic-bezier(.16,.84,.24,1) backwards; }
+.mk-panel:not([hidden]) .mk-m:nth-child(2) { animation-delay: .06s; }
+.mk-panel:not([hidden]) .mk-m:nth-child(3) { animation-delay: .12s; }
+.mk-panel:not([hidden]) .mk-m:nth-child(n+4) { animation-delay: .18s; }
+/* акция: медленный перелив */
+@keyframes promo-flow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+.strip, .w-cta { background: linear-gradient(110deg, #0b4442 0%, #0e5754 25%, #136a66 50%, #0e5754 75%, #0b4442 100%); background-size: 200% 100%; animation: promo-flow 9s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .rv, html.anim .a-in, html.anim .a-ttl, html.anim .a-pic { transform: none !important; clip-path: none !important; opacity: 1 !important; transition: none !important; }
+  .hero__img, .strip, .w-cta, .mk-panel, .mk-m { animation: none !important; }
+  .hero__img { transform: none; }
+  .btn::before { display: none; }
+}
