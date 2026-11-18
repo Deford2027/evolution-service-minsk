@@ -646,3 +646,10 @@ html.anim .a-pic.is-in { clip-path: inset(0 0 0 0 round 11px); transform: none; 
   .hero__img { transform: none; }
   .btn::before { display: none; }
 }
+
+/* Без горизонтального сдвига страницы на телефоне */
+html, body { overflow-x: hidden; }
+@supports (overflow-x: clip) { html, body { overflow-x: clip; } }
+/* фото без выхода за свой блок: вместо увеличения – только раскрытие рамкой */
+.split__img.a-pic, .why__img.a-pic { transform: none !important; }
+html.anim .split__img.a-pic:not(.is-in), html.anim .why__img.a-pic:not(.is-in) { clip-path: inset(8% 8% 8% 8% round 18px); }
