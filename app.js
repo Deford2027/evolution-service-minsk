@@ -80,6 +80,52 @@
   window.addEventListener('scroll', solid, { passive: true }); solid();
   hdr.addEventListener('focusin', function () { hdr.classList.remove('hide'); });
 
+  // Заявка во всплывающем окне: все ссылки на #zapis открывают копию формы этой страницы
+  var zapForm = $('#zapis form[data-form]'), pop = null, popBox = null, popBack = null;
+  if (zapForm) {
+    pop = document.createElement('div'); pop.className = 'pop'; pop.setAttribute('aria-hidden', 'true');
+    pop.innerHTML = '<div class="pop__bg" data-pop-close></div><div class="pop__box" role="dialog" aria-modal="true" aria-labelledby="pop-h"><button class="pop__x" type="button" data-pop-close aria-label="Закрыть">×</button><b class="pop__h" id="pop-h"></b><p class="pop__sub">Оставьте телефон – перезвоним, уточним машину и подберём удобное время.</p></div>';
+    popBox = $('.pop__box', pop);
+    var pf = zapForm.cloneNode(true);
+    pf.classList.remove('w-form', 'form--row'); pf.classList.add('pop__form');
+    $$('h2', pf).forEach(function (h) { h.parentNode.removeChild(h); });
+    $$('[id]', pf).forEach(function (el) { el.id += '-pop'; });
+    $$('label[for]', pf).forEach(function (l) { l.htmlFor += '-pop'; });
+    popBox.appendChild(pf);
+    var popCall = document.createElement('p'); popCall.className = 'pop__call';
+    popCall.innerHTML = 'Или позвоните: <a href="tel:+375291358888">+375 29 135-88-88</a>';
+    popBox.appendChild(popCall);
+    document.body.appendChild(pop);
+  }
+  function popSet(o, title) {
+    if (!pop) return;
+    if (o) { popBack = document.activeElement; $('#pop-h').textContent = title || 'Записаться на сервис'; }
+    pop.classList.toggle('open', o); pop.setAttribute('aria-hidden', !o);
+    document.documentElement.classList.toggle('pop-lock', o);
+    if (o) setTimeout(function () { var i = $('input:not([type=checkbox])', pop); if (i && !$('.sent', pop)) i.focus({ preventScroll: true }); }, 80);
+    else if (popBack && popBack.focus) popBack.focus({ preventScroll: true });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href="#zapis"]');
+    if (a && pop && !a.closest('.pop') && !a.closest('#zapis')) {
+      e.preventDefault();
+      var t = a.textContent.replace(/\s+/g, ' ').trim();
+      setTimeout(function () { popSet(true, t); }, 0);
+      return;
+    }
+    if (e.target.closest('[data-pop-close]')) popSet(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!pop || !pop.classList.contains('open')) return;
+    if (e.key === 'Escape') popSet(false);
+    if (e.key === 'Tab') {
+      var f = $$('a[href], button:not([disabled]), input', popBox).filter(function (x) { return x.offsetParent !== null; });
+      if (!f.length) return;
+      if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+    }
+  });
+
   // Маска телефона Беларуси: +375 (XX) XXX-XX-XX
   function mask(v) {
     var d = v.replace(/\D/g, '');

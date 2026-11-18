@@ -294,6 +294,30 @@ span.circ { opacity: .45; cursor: default; } /* ссылки на мессенд
 .tab, .sheet, .cnt { display: none; }
 .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .rv.in { opacity: 1; transform: none; }
+/* Всплывающее окно заявки */
+.pop { position: fixed; inset: 0; z-index: 110; display: flex; align-items: center; justify-content: center; padding: 20px; visibility: hidden; pointer-events: none; transition: visibility 0s .45s; }
+.pop.open { visibility: visible; pointer-events: auto; transition: none; }
+.pop__bg { position: absolute; inset: 0; background: rgba(10,14,14,.62); opacity: 0; transition: opacity .35s; }
+.pop.open .pop__bg { opacity: 1; }
+.pop__box { position: relative; width: 100%; max-width: 480px; max-height: calc(100dvh - 40px); overflow: auto; overscroll-behavior: contain; padding: 34px 32px 28px; border-radius: var(--r); background: #fff; color: var(--ink); opacity: 0; transform: translateY(24px) scale(.98); transition: opacity .35s, transform .45s cubic-bezier(.2,.8,.2,1); }
+.pop.open .pop__box { opacity: 1; transform: none; }
+.pop__x { position: absolute; right: 14px; top: 14px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--bg); font-size: 26px; line-height: 1; color: var(--ink2); cursor: pointer; }
+.pop__x:hover { background: #e2e6eb; }
+.pop__h { display: block; padding-right: 48px; font: 500 28px/1.12 var(--font); letter-spacing: -.6px; color: var(--ink); }
+.pop__sub { margin: 10px 0 22px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.pop__form { padding: 0; background: none; border-radius: 0; }
+.pop__form .btn { width: 100%; justify-self: stretch; margin-top: 6px; }
+.pop__call { margin-top: 16px; font-size: 14px; color: var(--muted); }
+.pop__call a { color: var(--ink2); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+.pop .form.sent ~ .pop__call { display: none; }
+.pop-lock body { overflow: hidden; }
+@media (max-width: 767px) {
+  .pop { align-items: flex-end; padding: 8px; }
+  .pop__box { max-height: calc(100svh - 16px); padding: 26px 20px calc(20px + env(safe-area-inset-bottom)); transform: translateY(40px); }
+  .pop__h { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .pop__bg, .pop__box { transition: none; } }
+
 /* Услуги на главной: появление по очереди и отклик на наведение */
 .svc__ph { display: block; margin-top: auto; overflow: hidden; border-radius: var(--r-img); }
 .svc__ph img { display: block; margin-top: 0; transition: transform .9s cubic-bezier(.2,.7,.2,1); }
