@@ -678,3 +678,20 @@ html.anim .split__img.a-pic:not(.is-in), html.anim .why__img.a-pic:not(.is-in) {
   .hero__img[src*="hero/ceny"] { --hpos: 60% 50%; }
   .hero__img[src*="hero/blog"] { --hpos: 74% 50%; }
 }
+
+@media (max-width: 767px) {
+  .hero__img[src*="hero/to.webp"] { --hpos: 62% 40%; }
+  .hero__img[src*="hero/to-geely.webp"] { --hpos: 50% 45%; }
+  .hero__img[src*="hero/to-byd.webp"] { --hpos: 56% 45%; }
+  .hero__img[src*="hero/to-lixiang.webp"] { --hpos: 64% 45%; }
+  .hero__img[src*="hero/diagnostika.webp"] { --hpos: 60% 45%; }
+  .hero__img[src*="hero/diagnostika-byd.webp"] { --hpos: 60% 45%; }
+  .hero__img[src*="hero/tormoza.webp"] { --hpos: 72% 40%; }
+  .hero__img[src*="hero/podveska.webp"] { --hpos: 62% 40%; }
+  .hero__img[src*="hero/batareya.webp"] { --hpos: 65% 50%; }
+  .hero__img[src*="hero/remont.webp"] { --hpos: 68% 50%; }
+  .hero__img[src*="hero/rusifikaciya.webp"] { --hpos: 72% 50%; }
+  .hero__img[src*="hero/rusifikaciya-byd.webp"] { --hpos: 65% 50%; }
+  .hero__img[src*="hero/proshivka.webp"] { --hpos: 80% 50%; }
+  .hero__img[src*="hero/prilozheniya.webp"] { --hpos: 80% 50%; }
+}
