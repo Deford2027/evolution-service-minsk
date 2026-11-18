@@ -1,0 +1,36 @@
+{
+ "_": "Прототип: demo, заявки никуда не уходят; Telegram и Макс – ссылки запросить у заказчика.",
+ "demo": true,
+ "consent": false,
+ "endpoint": "demo:",
+ "tz": 3,
+ "agreement": "/evolution-service-minsk/proto/privacy-policy/",
+ "widgets": [
+  {
+   "id": "uhod",
+   "enabled": true,
+   "type": "modal",
+   "title": "Окно на уходе: цена ТО вашей модели",
+   "group": "lead",
+   "trigger": {
+    "on": "exit"
+   },
+   "target": {
+    "device": "desktop"
+   },
+   "priority": 5,
+   "content": {
+    "title": "Назовём цену ТО вашей модели за 10 минут",
+    "text": "Оставьте телефон – мастер перезвонит, уточнит модель и пробег и назовёт цену до записи.",
+    "done": "Заявка принята",
+    "doneText": "Мастер перезвонит и назовёт цену."
+   },
+   "form": {
+    "fields": [
+     "phone"
+    ],
+    "button": "Узнать цену ТО"
+   }
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "_": "Прототип: demo, заявки никуда не уходят; Telegram и Макс – ссылки запросить у заказчика.",
+ "demo": true,
+ "consent": false,
+ "endpoint": "demo:",
+ "tz": 3,
+ "agreement": "/evolution-service-minsk/proto/privacy-policy/",
+ "widgets": [
+  {
+   "id": "uhod",
+   "enabled": true,
+   "type": "modal",
+   "title": "Окно на уходе: цена ТО вашей модели",
+   "group": "lead",
+   "trigger": {
+    "on": "exit"
+   },
+   "target": {
+    "device": "desktop"
+   },
+   "priority": 5,
+   "content": {
+    "title": "Назовём цену ТО вашей модели за 10 минут",
+    "text": "Оставьте телефон – мастер перезвонит, уточнит модель и пробег и назовёт цену до записи.",
+    "done": "Заявка принята",
+    "doneText": "Мастер перезвонит и назовёт цену."
+   },
+   "form": {
+    "fields": [
+     "phone"
+    ],
+    "button": "Узнать цену ТО"
+   }
+  },
+  {
+   "id": "akciya",
+   "enabled": true,
+   "type": "modal",
+   "title": "Окно через 40 с: скидка 10 % на ремонт и ТО",
+   "group": "lead",
+   "trigger": {
+    "on": "time",
+    "s": 40
+   },
+   "priority": 3,
+   "mobileAs": "bar",
+   "content": {
+    "title": "Скидка 10 % на ремонт и ТО до 1 декабря",
+    "text": "Оставьте телефон – закрепим скидку за вами и подберём время.",
+    "short": "−10 % на ремонт и ТО до 1 декабря",
+    "button": "Закрепить",
+    "done": "Заявка принята",
+    "doneText": "Перезвоним и закрепим скидку."
+   },
+   "form": {
+    "fields": [
+     "phone"
+    ],
+    "button": "Закрепить скидку"
+   }
+  }
+ ]
+}
