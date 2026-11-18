@@ -671,3 +671,10 @@ html.anim .split__img.a-pic:not(.is-in), html.anim .why__img.a-pic:not(.is-in) {
   .hero__img[src*="hero-zeekr"] { --hpos: 50% 60%; }
   .hero__img[src*="about-diag"] { --hpos: 60% 50%; }
 }
+
+@media (max-width: 767px) {
+  .hero__img[src*="hero/uslugi"] { --hpos: 70% 45%; }
+  .hero__img[src*="hero/marki"] { --hpos: 66% 62%; }
+  .hero__img[src*="hero/ceny"] { --hpos: 60% 50%; }
+  .hero__img[src*="hero/blog"] { --hpos: 74% 50%; }
+}
