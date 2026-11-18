@@ -192,6 +192,21 @@
   lb.addEventListener('click', function (e) { if (e.target !== lbImg) lbSet(null); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { lbSet(null); sheetSet(false); hdr.classList.remove('open'); if (burger) burger.setAttribute('aria-expanded', false); } });
 
+  // Лёгкие анимации на всех страницах: блоки появляются при прокрутке, карточки в ряду – по очереди
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    var AN = '.w-block h2, .w-block .w-title, .w-block .w-lead, .w-grid > *, .w-steps > li, .w-table-wrap, .w-fold-ul, .w-two > *, .w-faq > *, .w-block details, .w-links, .w-actions, .w-trust, .w-cta, .w-models, .ftr__in';
+    var an = $$(AN).filter(function (el) { return !el.closest('.rv, .hero, .hero--in, .pop, .sheet') && !el.parentNode.closest('.w-grid > *, .w-two > *'); });
+    document.documentElement.classList.add('anim');
+    an.forEach(function (el) {
+      el.classList.add('a-in');
+      var sib = Array.prototype.indexOf.call(el.parentNode.children, el);
+      if (/w-grid|w-steps|w-two|w-faq/.test(el.parentNode.className)) el.style.setProperty('--d', Math.min(sib, 6) * 70 + 'ms');
+    });
+    var aio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); aio.unobserve(e.target); } }); }, { rootMargin: '0px 0px -6% 0px' });
+    an.forEach(function (el) { aio.observe(el); });
+  }
+
   // Появление блоков: только прозрачность и сдвиг, вёрстка не прыгает
   var rv = $$('.rv');
   if ('IntersectionObserver' in window) {
