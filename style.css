@@ -294,6 +294,31 @@ span.circ { opacity: .45; cursor: default; } /* ссылки на мессенд
 .tab, .sheet, .cnt { display: none; }
 .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .rv.in { opacity: 1; transform: none; }
+/* Услуги на главной: появление по очереди и отклик на наведение */
+.svc__ph { display: block; margin-top: auto; overflow: hidden; border-radius: var(--r-img); }
+.svc__ph img { display: block; margin-top: 0; transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+#uslugi .svc, #uslugi .prc { transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s ease; }
+#uslugi .prc__price { transition: border-color .3s; }
+#uslugi .rv.svc-big, #uslugi .rv.svc-sm { opacity: 1; transform: none; transition: none; }
+#uslugi .rv:not(.in) > * { opacity: 0; }
+#uslugi .rv.in > * { animation: svc-in .8s cubic-bezier(.2,.7,.2,1) backwards; }
+#uslugi .rv.in .svc__ph img { animation: svc-ph-in 1.4s cubic-bezier(.2,.7,.2,1) backwards; }
+#uslugi .rv.in > :nth-child(2), #uslugi .rv.in > :nth-child(2) img { animation-delay: .1s; }
+#uslugi .rv.in > :nth-child(3), #uslugi .rv.in > :nth-child(3) img { animation-delay: .2s; }
+@keyframes svc-in { from { opacity: 0; transform: translateY(34px); } to { opacity: 1; transform: none; } }
+@keyframes svc-ph-in { from { transform: scale(1.14); } to { transform: none; } }
+@keyframes go-fly { 0% { transform: none; opacity: 1; } 45% { transform: translate(14px,-14px); opacity: 0; } 46% { transform: translate(-14px,14px); opacity: 0; } 100% { transform: none; opacity: 1; } }
+@media (hover: hover) {
+  #uslugi .rv.in > .svc:hover, #uslugi .rv.in > .prc:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(20,30,40,.10); }
+  #uslugi .svc:hover .svc__ph img { transform: scale(1.06); }
+  #uslugi .prc:hover .prc__price { border-color: rgba(11,68,66,.35); }
+  #uslugi a:hover .go svg { animation: go-fly .5s ease; }
+  #uslugi a:hover .go { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #uslugi .rv > *, #uslugi .rv .svc__ph img { opacity: 1 !important; animation: none !important; }
+}
+
 /* Марки и модели: поиск + вкладки-логотипы */
 .mk-find { flex: 0 0 380px; }
 .mk-find__f { position: relative; display: flex; align-items: center; }
