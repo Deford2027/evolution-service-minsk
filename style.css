@@ -653,3 +653,21 @@ html, body { overflow-x: hidden; }
 /* фото без выхода за свой блок: вместо увеличения – только раскрытие рамкой */
 .split__img.a-pic, .why__img.a-pic { transform: none !important; }
 html.anim .split__img.a-pic:not(.is-in), html.anim .why__img.a-pic:not(.is-in) { clip-path: inset(8% 8% 8% 8% round 18px); }
+
+/* ===== Первые экраны ===== */
+@media (max-width: 767px) {
+  /* Первый экран на телефоне: фото сверху, плавный переход в тёмный фон, текст ниже */
+  .hero:not(.hero--plain) { display: flex; flex-direction: column; justify-content: flex-end; min-height: 100vh; min-height: 100svh; background: #0d1110; }
+  .hero:not(.hero--plain) .hero__img { inset: 0 0 auto 0; height: 60vh; height: 60svh; object-position: var(--hpos, 60% 50%); }
+  .hero:not(.hero--plain) .hero__img { animation: none; transform: none !important; }
+  .hero:not(.hero--plain) .hero__txt, .hero:not(.hero--plain) .hero__in { transform: none !important; opacity: 1 !important; }
+  .hero:not(.hero--plain)::after { inset: 0 0 auto 0; height: calc(60vh + 4px); height: calc(60svh + 4px); background: linear-gradient(180deg, rgba(13,17,16,.55) 0%, rgba(13,17,16,0) 22%, rgba(13,17,16,0) 46%, rgba(13,17,16,.82) 76%, #0d1110 94%); }
+  .hero:not(.hero--plain) > .wrap { width: 100%; padding-top: 44vh; padding-top: 44svh; padding-bottom: 28px; }
+  .hero__img[src*="hero6"] { --hpos: 74% 60%; }
+  .hero__img[src*="svc-to"] { --hpos: 42% 50%; }
+  .hero__img[src*="svc-diag"] { --hpos: 50% 50%; }
+  .hero__img[src*="svc-rus"] { --hpos: 72% 50%; }
+  .hero__img[src*="why-service"] { --hpos: 40% 50%; }
+  .hero__img[src*="hero-zeekr"] { --hpos: 50% 60%; }
+  .hero__img[src*="about-diag"] { --hpos: 60% 50%; }
+}
