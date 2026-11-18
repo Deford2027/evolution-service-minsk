@@ -83,8 +83,8 @@ span.circ { opacity: .45; cursor: default; } /* ссылки на мессенд
 .mnu a::after { content: '›'; color: var(--muted); font-size: 20px; }
 
 /* ── Первый экран (макет 1:1082–1:1089): фото на всю ширину, затемнение слева */
-.hero { position: relative; min-height: 810px; display: flex; align-items: center; color: #fff; overflow: hidden; background: #111; }
-.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+.hero { position: relative; min-height: 810px; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; color: #fff; overflow: hidden; background: #111; }
+.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 66% 55%; }
 .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(75% 100% at 15% 38%, rgba(0,0,0,.92), rgba(0,0,0,0) 100%); pointer-events: none; }
 .hero .wrap { position: relative; z-index: 1; padding-top: 90px; padding-bottom: 40px; }
 .hero__txt { max-width: 718px; padding-right: 80px; }
@@ -335,7 +335,7 @@ span.circ { opacity: .45; cursor: default; } /* ссылки на мессенд
   .menu-btn { margin-left: 0; padding: 0 5px 0 12px; gap: 8px; }
 
   /* Первый экран: H1 → кнопки → подзаголовок; фото фоном; H1 и кнопка без прокрутки */
-  .hero { min-height: 0; height: auto; align-items: flex-end; }
+  .hero { min-height: 100vh; min-height: 100svh; height: auto; align-items: flex-end; }
   .hero__img { object-position: 72% 50%; }
   .hero::after { background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 40%, rgba(0,0,0,.9) 75%, rgba(0,0,0,.94) 100%); }
   .hero .wrap { padding-top: 120px; padding-bottom: 28px; }
