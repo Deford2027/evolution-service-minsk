@@ -204,3 +204,5 @@ figure.w-stack > .w-photo { max-height: none; aspect-ratio: 4 / 3; }
 .legal .legal__li { padding-left: 14px; }
 
 .map--in { min-height: 320px; padding: 20px; margin-top: 6px; }
+
+.w-faq details:last-of-type:nth-of-type(odd) { grid-column: 1 / -1; }

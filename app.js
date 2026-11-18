@@ -207,6 +207,36 @@
     an.forEach(function (el) { aio.observe(el); });
   }
 
+  var reduceFaq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Вопросы: плавное открытие и закрытие ответа
+  $$('.faq details, .w-faq details').forEach(function (d) {
+    var s = $('summary', d);
+    if (!s) return;
+    s.addEventListener('click', function (e) {
+      if (reduceFaq || !Element.prototype.animate) return;
+      e.preventDefault();
+      if (d._busy) return;
+      var body = Array.prototype.filter.call(d.children, function (c) { return c !== s; });
+      var opening = !d.open;
+      if (opening) d.open = true;
+      d.classList.toggle('is-open', opening);
+      d._busy = true;
+      if (!body.length) { d.open = opening; d._busy = false; return; }
+      body.forEach(function (c) {
+        var cs = getComputedStyle(c), h = c.scrollHeight, pt = cs.paddingTop, pb = cs.paddingBottom;
+        var shut = { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 };
+        var full = { height: h + 'px', paddingTop: pt, paddingBottom: pb, opacity: 1 };
+        c.style.overflow = 'hidden';
+        var a = c.animate(opening ? [shut, full] : [full, shut], { duration: opening ? 320 : 240, easing: 'cubic-bezier(.2,.7,.2,1)' });
+        a.onfinish = a.oncancel = function () { c.style.overflow = ''; };
+      });
+      // завершаем по таймеру – не зависим от событий анимации
+      clearTimeout(d._t);
+      d._t = setTimeout(function () { if (!opening) d.open = false; d._busy = false; }, opening ? 330 : 250);
+    });
+    if (d.open) d.classList.add('is-open');
+  });
+
   // Появление блоков: только прозрачность и сдвиг, вёрстка не прыгает
   var rv = $$('.rv');
   if ('IntersectionObserver' in window) {
