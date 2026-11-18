@@ -319,7 +319,8 @@ span.circ { opacity: .45; cursor: default; } /* ссылки на мессенд
 .mk-res__g { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .mk-m { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 120px; padding: 20px; border-radius: 12px; background: var(--bg); transition: background .2s; }
 .mk-m:hover { background: #e2e6eb; }
-.mk-m span { font-size: 13px; color: var(--muted); }
+.mk-m span:not(.go) { font-size: 13px; color: var(--muted); }
+.mk-m .go { color: #fff; }
 .mk-m b { font: 500 26px/1.1 var(--font); letter-spacing: -.5px; color: var(--ink2); padding-right: 30px; }
 .mk-m .go { position: absolute; right: 16px; top: 16px; width: 32px; height: 32px; }
 .mk-rl { --H: 22px; display: flex; align-items: center; gap: 8px; }

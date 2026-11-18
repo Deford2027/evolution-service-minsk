@@ -8,7 +8,7 @@
 <link rel="icon" href="/evolution-service-minsk/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/evolution-service-minsk/style.css?v=0e5b428f">
+<link rel="stylesheet" href="/evolution-service-minsk/style.css?v=9de36cb0">
 <style>
 body { padding-bottom: 80px; }
 .vnav { position: sticky; top: 0; z-index: 20; background: rgba(236,238,242,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
@@ -73,7 +73,7 @@ body { padding-bottom: 80px; }
 .v4__models { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-content: start; }
 .v4__m { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 120px; padding: 20px; border-radius: 12px; background: var(--bg); transition: background .2s; }
 .v4__m:hover { background: #e2e6eb; }
-.v4__m span { font-size: 13px; color: var(--muted); }
+.v4__m span:not(.go) { font-size: 13px; color: var(--muted); } .v4__m .go { color: #fff; }
 .v4__m b { font: 500 26px/1.1 var(--font); letter-spacing: -.5px; color: var(--ink2); }
 .v4__m .go { position: absolute; right: 16px; top: 16px; width: 32px; height: 32px; }
 
