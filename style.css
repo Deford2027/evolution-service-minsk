@@ -567,3 +567,18 @@ html.anim .a-in.is-in { opacity: 1; transform: none; }
 .faq summary::after, .w-faq summary::after { transition: transform .32s cubic-bezier(.2,.7,.2,1), background .2s; }
 .faq details.is-open summary::after, .w-faq details.is-open summary::after { transform: rotate(180deg); }
 .faq summary:hover::after, .w-faq summary:hover::after { background: var(--green2); }
+
+/* Мессенджеры: шапка и подвал */
+.hdr__soc { display: flex; gap: 8px; margin-left: 10px; }
+.hdr__soc .circ svg { width: 18px; height: 18px; }
+.ftr__hours { display: inline-flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.ftr__soc { display: inline-flex; gap: 8px; line-height: 0; }
+.ftr__soc .ftr-ic svg { display: block; }
+.ftr__soc .ftr-ic { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--green); color: #fff; transition: background .2s, transform .2s; }
+.ftr__soc .ftr-ic svg { width: 17px; height: 17px; }
+.ftr__soc .ftr-ic:hover { background: var(--green2); color: #fff; transform: translateY(-1px); }
+@media (max-width: 1080px) { .hdr__soc { display: flex; } }
+@media (max-width: 767px) {
+  .hdr__soc { gap: 6px; margin-left: 0; }
+  .hdr__soc .circ { width: 40px; height: 40px; }
+}
