@@ -54,9 +54,10 @@ a:hover .go, .go:hover { background: var(--green2); transform: translate(1px,-1p
 .dark .ask, .hero .ask { background: rgba(255,255,255,.14); color: #bfe6e2; }
 
 /* ── Шапка: стекло поверх первого экрана (макет 1:1092) */
-.hdr { position: fixed; z-index: 60; top: 20px; left: 0; right: 0; pointer-events: none; }
+.hdr { position: fixed; z-index: 60; top: 20px; left: 0; right: 0; pointer-events: none; transition: transform .35s ease; }
+.hdr.hide { transform: translateY(calc(-100% - 30px)); }
 .hdr__in { pointer-events: auto; display: flex; align-items: center; gap: 14px; height: 70px; padding: 0 17px; border-radius: 10px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); color: #fff; transition: background .3s, border-color .3s; }
-.hdr.solid .hdr__in { background: rgba(11,68,66,.94); border-color: rgba(255,255,255,.08); }
+.hdr.solid .hdr__in { background: rgba(17,17,17,.9); border-color: rgba(255,255,255,.1); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
 .logo { display: flex; align-items: center; min-height: 44px; margin-right: auto; }
 .logo picture { display: block; }
 .logo img { display: block; height: 18px; width: auto; }
@@ -293,7 +294,7 @@ span.circ { opacity: .45; cursor: default; } /* ссылки на мессенд
 .tab, .sheet, .cnt { display: none; }
 .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .rv.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { .hdr { transition: none; } .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
 
 /* ── Ноутбук и планшет */
 @media (max-width: 1240px) {

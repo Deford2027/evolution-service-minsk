@@ -10,9 +10,18 @@
   });
   $$('.mnu a').forEach(function (a) { a.addEventListener('click', function () { hdr.classList.remove('open'); }); });
   document.addEventListener('click', function (e) { if (!hdr.contains(e.target)) { hdr.classList.remove('open'); if (burger) burger.setAttribute('aria-expanded', false); } });
-  // Шапка – стекло на первом экране, зелёная заливка ниже
-  function solid() { hdr.classList.toggle('solid', window.scrollY > 120); }
+  // Шапка – стекло на первом экране, тёмное стекло ниже; прячется при прокрутке вниз, появляется при прокрутке вверх
+  var lastY = window.scrollY;
+  function solid() {
+    var y = window.scrollY, d = y - lastY;
+    hdr.classList.toggle('solid', y > 120);
+    if (y < 120 || hdr.classList.contains('open')) hdr.classList.remove('hide');
+    else if (d > 6) hdr.classList.add('hide');
+    else if (d < -6) hdr.classList.remove('hide');
+    if (Math.abs(d) > 6 || y < 120) lastY = y;
+  }
   window.addEventListener('scroll', solid, { passive: true }); solid();
+  hdr.addEventListener('focusin', function () { hdr.classList.remove('hide'); });
 
   // Маска телефона Беларуси: +375 (XX) XXX-XX-XX
   function mask(v) {
