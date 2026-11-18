@@ -585,10 +585,19 @@ html.anim .a-in.is-in { opacity: 1; transform: none; }
 
 /* Значки: шапка – белая обводка, подвал – зелёный круг; сами иконки сплошные белые */
 .hdr .circ { width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.75); border-radius: 50%; background: none; color: #fff; }
-.hdr .circ svg { width: 19px; height: 19px; }
+.hdr .circ { --i: 19px; }
 .hdr a.circ:hover { background: rgba(255,255,255,.14); border-color: #fff; }
 .ftr__soc { gap: 8px; }
 .ftr__soc .ftr-ic { width: 38px; height: 38px; border-radius: 50%; background: var(--green); color: #fff; }
-.ftr__soc .ftr-ic svg { width: 18px; height: 18px; }
+.ftr__soc .ftr-ic { --i: 18px; }
 .ftr__soc .ftr-ic:hover { background: var(--green2); color: #fff; }
-@media (max-width: 767px) { .hdr .circ { width: 40px; height: 40px; } .hdr .circ svg { width: 18px; height: 18px; } }
+@media (max-width: 767px) { .hdr .circ { width: 40px; height: 40px; --i: 18px; } }
+
+/* Оптический баланс значков: тяжёлые меньше, лёгкие больше, самолётик в центр */
+.hdr .circ svg, .ftr__soc .ftr-ic svg { width: calc(var(--i, 19px) * var(--s, 1)); height: calc(var(--i, 19px) * var(--s, 1)); }
+a[href*="t.me"].circ, a[href*="t.me"].ftr-ic { --s: 1.12; }
+a[href*="t.me"].circ svg, a[href*="t.me"].ftr-ic svg { transform: translate(4%, 7%); }
+a[href*="wa.me"].circ, a[href*="wa.me"].ftr-ic { --s: .86; }
+a[href^="tel:"].circ { --s: 1.1; }
+a[href*="instagram"].ftr-ic { --s: .9; }
+a[href*="youtube"].ftr-ic { --s: .94; }
