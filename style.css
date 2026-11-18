@@ -599,5 +599,5 @@ a[href*="t.me"].circ, a[href*="t.me"].ftr-ic { --s: 1.12; }
 a[href*="t.me"].circ svg, a[href*="t.me"].ftr-ic svg { transform: translate(4%, 7%); }
 a[href*="wa.me"].circ, a[href*="wa.me"].ftr-ic { --s: .86; }
 a[href^="tel:"].circ { --s: 1.1; }
-a[href*="instagram"].ftr-ic { --s: .9; }
+a[href*="instagram"].ftr-ic { --s: 1.1; }
 a[href*="youtube"].ftr-ic { --s: .94; }
