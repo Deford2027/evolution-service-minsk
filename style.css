@@ -354,14 +354,14 @@ span.circ { opacity: .45; cursor: default; } /* ссылки на мессенд
 .mk-find__x:hover { background: var(--bg); }
 .mk-lg { display: block; height: calc(var(--H, 40px) * var(--k, 1)); width: auto; max-width: 100%; object-fit: contain; }
 .mk-tabs { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 8px; margin-bottom: 10px; }
-.mk-tab { --H: 46px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; height: 104px; padding: 12px 8px; border: 1px solid transparent; border-radius: 12px; background: #fff; cursor: pointer; font: 500 12px/1 var(--font); color: var(--muted); transition: border-color .2s, box-shadow .2s; }
-.mk-tab .mk-lg { filter: grayscale(1); opacity: .7; transition: filter .2s, opacity .2s; }
+.mk-tab { --H: 46px; display: grid; grid-template-rows: var(--H) auto; justify-items: center; align-items: center; align-content: center; gap: 10px; height: 104px; padding: 12px 8px; border: 1px solid transparent; border-radius: 12px; background: #fff; cursor: pointer; font: 500 12px/1 var(--font); color: var(--muted); transition: border-color .2s, box-shadow .2s; }
+.mk-tab .mk-lg { align-self: center; filter: grayscale(1); opacity: .7; transition: filter .2s, opacity .2s; }
 .mk-tab[aria-selected="true"] { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); color: var(--ink2); }
 .mk-tab[aria-selected="true"] .mk-lg, .mk-tab:hover .mk-lg { filter: none; opacity: 1; }
 .mk-tab:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 .mk-panel { display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 40px; padding: 34px; }
 .mk-panel[hidden], .mk-res[hidden], .mk-r[hidden], .mk-none[hidden], .mk-tabs[hidden] { display: none; }
-.mk-big { --H: 58px; display: flex; align-items: center; height: 64px; margin-bottom: 22px; }
+.mk-big { --H: 76px; display: flex; align-items: center; height: 76px; margin-bottom: 22px; }
 .mk-info h3 { margin: 0 0 10px; font: 500 30px/1.1 var(--font); letter-spacing: -.7px; }
 .mk-info p { margin: 0 0 26px; color: var(--muted); font-size: 15px; }
 .mk-models, .mk-res__g { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-content: start; }
@@ -372,7 +372,7 @@ span.circ { opacity: .45; cursor: default; } /* ссылки на мессенд
 .mk-m .go { color: #fff; }
 .mk-m b { font: 500 26px/1.1 var(--font); letter-spacing: -.5px; color: var(--ink2); padding-right: 30px; }
 .mk-m .go { position: absolute; right: 16px; top: 16px; width: 32px; height: 32px; }
-.mk-rl { --H: 22px; display: flex; align-items: center; gap: 8px; }
+.mk-rl { --H: 30px; display: flex; align-items: center; gap: 8px; }
 .mk-rl .mk-lg { max-width: 60px; }
 .mk-res { padding: 26px; }
 .mk-res__n { margin: 0 0 16px; font-size: 14px; color: var(--muted); }
@@ -391,7 +391,7 @@ span.circ { opacity: .45; cursor: default; } /* ссылки на мессенд
   .mk-tabs::-webkit-scrollbar { display: none; }
   .mk-tab { --H: 36px; flex: 0 0 88px; height: 84px; }
   .mk-panel { padding: 20px; }
-  .mk-big { --H: 46px; height: 50px; margin-bottom: 16px; }
+  .mk-big { --H: 60px; height: 64px; margin-bottom: 16px; }
   .mk-info h3 { font-size: 24px; }
   .mk-info p { margin-bottom: 20px; }
   .mk-info .btn { width: 100%; }
