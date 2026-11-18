@@ -10,6 +10,63 @@
   });
   $$('.mnu a').forEach(function (a) { a.addEventListener('click', function () { hdr.classList.remove('open'); }); });
   document.addEventListener('click', function (e) { if (!hdr.contains(e.target)) { hdr.classList.remove('open'); if (burger) burger.setAttribute('aria-expanded', false); } });
+  // Марки и модели: вкладки-логотипы и поиск модели
+  var mk = $('.mk');
+  if (mk) {
+    var mkTabs = $$('.mk-tab', mk), mkBar = $('.mk-tabs', mk), mkPanels = $$('.mk-panel', mk);
+    var mkRes = $('#mk-res'), mkItems = $$('.mk-r', mk), mkN = $('.mk-res__n', mk), mkNone = $('.mk-none', mk);
+    var mkQ = $('#mk-q'), mkX = $('.mk-find__x');
+    var mkSel = function (t, focus) {
+      mkTabs.forEach(function (x) { var on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; });
+      if (focus) t.focus();
+      if (t.scrollIntoView && mkBar.scrollWidth > mkBar.clientWidth) mkBar.scrollTo({ left: t.offsetLeft - mkBar.clientWidth / 2 + t.offsetWidth / 2, behavior: 'smooth' });
+    };
+    mkTabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { mkSel(t); });
+      t.addEventListener('keydown', function (e) {
+        var d = { ArrowRight: 1, ArrowLeft: -1 }[e.key]; if (!d) return;
+        e.preventDefault(); mkSel(mkTabs[(i + d + mkTabs.length) % mkTabs.length], true);
+      });
+    });
+    // кириллица → латиница, чтобы «л7», «с05», «ех5» находили L7, S05, EX5
+    var tr = { 'а':'a','в':'b','е':'e','к':'k','м':'m','н':'h','о':'o','р':'p','с':'s','т':'t','у':'y','х':'x','л':'l','д':'d','и':'i','п':'p','г':'g','з':'z','ф':'f','ю':'yu','я':'ya','ц':'c','ч':'ch','ш':'sh','б':'b','ь':'','ъ':'','й':'i','ы':'y','э':'e','ж':'j','ё':'e' };
+    var norm = function (s) { return s.toLowerCase().replace(/[\s\-–_.,]+/g, ''); };
+    var lat = function (s) { return s.replace(/[а-яё]/g, function (c) { return tr[c] != null ? tr[c] : c; }); };
+    mkItems.forEach(function (a) {
+      a._t = a.getAttribute('data-q').toLowerCase().split(/\s+/).filter(Boolean);
+      var br = a.querySelector('.mk-rl').textContent, md = a.querySelector('b').textContent;
+      a._m = [norm(md), norm(br + md)];
+    });
+    // слово запроса совпадает с началом любого слова (марка, модель, русское написание),
+    // либо весь запрос без пробелов – часть названия модели («ex 5» → EX5)
+    var hit = function (a, words, whole) {
+      var pre = function (w) { return a._t.some(function (x) { return x.indexOf(w) === 0; }); };
+      if (words.every(function (w) { var w1 = norm(w); return pre(w1) || pre(lat(w1)); })) return true;
+      return [whole, lat(whole)].some(function (q) { return q.length > 1 && a._m.some(function (m) { return m.indexOf(q) > -1; }); });
+    };
+    var mkFind = function () {
+      var raw = mkQ.value.trim().toLowerCase();
+      var words = raw.split(/\s+/).filter(Boolean);
+      mkX.hidden = !raw;
+      if (!words.length) { mkRes.hidden = true; mkBar.hidden = false; mkTabs.forEach(function (t) { if (t.getAttribute('aria-selected') === 'true') mkSel(t); }); return; }
+      mkBar.hidden = true; mkPanels.forEach(function (p) { p.hidden = true; }); mkRes.hidden = false;
+      var n = 0;
+      mkItems.forEach(function (a) {
+        var ok = hit(a, words, norm(raw));
+        a.hidden = !ok; if (ok) n++;
+      });
+      mkNone.hidden = n > 0;
+      mkN.textContent = n ? 'Нашли: ' + n + ' ' + (n % 10 === 1 && n % 100 !== 11 ? 'модель' : (n % 10 > 1 && n % 10 < 5 && (n % 100 < 12 || n % 100 > 14)) ? 'модели' : 'моделей') : '';
+    };
+    mkQ.addEventListener('input', mkFind);
+    mkQ.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { mkQ.value = ''; mkFind(); }
+      if (e.key === 'Enter') { var f = mkItems.filter(function (a) { return !a.hidden; }); if (f.length === 1) location.href = f[0].href; }
+    });
+    mkX.addEventListener('click', function () { mkQ.value = ''; mkFind(); mkQ.focus(); });
+    if (mkQ.value) mkFind();
+  }
+
   // Шапка – стекло на первом экране, тёмное стекло ниже; прячется при прокрутке вниз, появляется при прокрутке вверх
   var lastY = window.scrollY;
   function solid() {
