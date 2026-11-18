@@ -583,7 +583,11 @@ html.anim .a-in.is-in { opacity: 1; transform: none; }
   .hdr__soc .circ { width: 40px; height: 40px; }
 }
 
-/* Значки в шапке – с заливкой */
-.hdr .circ { background: var(--green); border-color: var(--green); color: #fff; }
-.hdr a.circ:hover { background: var(--green2); border-color: var(--green2); }
-.hdr__soc a[href*="t.me"] svg, .ftr__soc a[href*="t.me"] svg { transform: translateX(-1px); }
+/* Значки в шапке и подвале – сплошные, без кругов */
+.hdr .circ { width: 40px; height: 40px; border: 0; border-radius: 8px; background: none; color: #fff; }
+.hdr .circ svg { width: 22px; height: 22px; }
+.hdr a.circ:hover { background: rgba(255,255,255,.12); }
+.ftr__soc { gap: 4px; }
+.ftr__soc .ftr-ic { width: 36px; height: 36px; border-radius: 8px; background: none; color: var(--green); }
+.ftr__soc .ftr-ic svg { width: 22px; height: 22px; }
+.ftr__soc .ftr-ic:hover { background: rgba(11,68,66,.08); color: var(--green2); }
