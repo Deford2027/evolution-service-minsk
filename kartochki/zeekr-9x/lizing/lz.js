@@ -61,10 +61,12 @@
     if (steps.length) go(0);
 
     box.addEventListener('click', function (e) {
-      var b = e.target.closest('[data-set]');
+      /* ищем только внутри калькулятора: у секции-обёртки тоже есть data-next (пометка вопроса) */
+      var own = function (sel) { var el = e.target.closest(sel); return el && box.contains(el) ? el : null };
+      var b = own('[data-set]');
       if (b) { st[b.dataset.set] = b.dataset.set === 'adv' ? +b.dataset.v : b.dataset.v; draw(); if (b.closest('[data-auto]') && steps.length) setTimeout(function () { go(cur + 1) }, 220); return }
-      if (e.target.closest('[data-next]')) go(cur + 1);
-      if (e.target.closest('[data-prev]')) go(cur - 1);
+      if (own('[data-next]')) go(cur + 1);
+      else if (own('[data-prev]')) go(cur - 1);
     });
     box.addEventListener('input', function (e) {
       if (e.target.name === 'adv') { st.adv = Math.round(+e.target.value / 5) * 5; draw() }
