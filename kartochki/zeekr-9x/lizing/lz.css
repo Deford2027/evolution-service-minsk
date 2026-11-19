@@ -75,3 +75,8 @@
   .lza .lz-f{grid-template-columns:1fr}
 }
 [data-lz] [hidden]{display:none!important}
+/* форма заявки: поля и кнопка не слипаются */
+.lz-f{display:grid;gap:12px;margin-top:16px}
+.lz-f .w-field{margin:0}
+[data-lz] .lz-f .w-check{margin:2px 0 4px}
+.lz-f .w-btn{margin-top:2px}

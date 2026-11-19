@@ -18,3 +18,17 @@ html[data-theme=light] .td .td-car{background:radial-gradient(70% 60% at 50% 62%
 
 /* блок лизинга со своей заявкой */
 .lz-f{margin-top:4px}.lz-f .w-field{margin-top:4px}.lz-f .w-check{margin:12px 0 16px}
+
+/* как заказать: плитки с иконками */
+.ord{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.ord li{position:relative;padding:22px 22px 24px;overflow:hidden}
+.ord-ic{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:var(--acc-s);color:var(--acc-t);margin-bottom:18px}
+.ord-n{position:absolute;top:16px;right:20px;font:700 40px/1 var(--fd);letter-spacing:-.04em;color:var(--line2)}
+.ord h3{font:600 18px/1.3 var(--fd)}
+.ord p{color:var(--tx2);font-size:14.5px;margin-top:6px}
+.ord li:last-child{border-color:var(--acc)}
+.ord li:last-child .ord-ic{background:var(--acc);color:#fff}
+@media (max-width:900px){.ord{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.ord{grid-template-columns:1fr}}
+/* лизинг в карточке */
+.lz-in{margin-top:28px}

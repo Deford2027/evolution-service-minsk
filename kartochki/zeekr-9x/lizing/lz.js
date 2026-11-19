@@ -56,6 +56,7 @@
       $$('[data-stepn]', box).forEach(function (e) { e.textContent = 'Шаг ' + (cur + 1) + ' из ' + steps.length });
       $$('[data-dot]', box).forEach(function (e, j) { e.classList.toggle('on', j <= cur) });
       $$('[data-prev]', box).forEach(function (b) { b.hidden = cur === 0 });
+      $$('[data-next]', box).forEach(function (b) { b.hidden = cur === steps.length - 1 });   // на последнем шаге – только кнопка заявки
     }
     if (steps.length) go(0);
 
@@ -81,14 +82,14 @@
         if (tel.value.replace(/\D/g, '').length < 12) { tel.closest('.w-field').classList.add('bad'); tel.focus(); return }
         var r = calc(st);
         $('.w-success', box).hidden = false; f.hidden = true;
-        $('[data-done]', box).textContent = 'В заявке: ' + (st.type === 'kredit' ? 'кредит' : 'лизинг') + ' · ' + C.name + ' ' + r.x.name + ' · аванс ' + st.adv + ' % · ' + TERM[st.term] + ' · ≈ ' + fmt(r.pay) + ' $/мес · ' + tel.value + ' (в прототипе никуда не уходит)';
+        $('[data-done]', box).textContent = 'В заявке: ' + (st.type === 'kredit' ? 'кредит' : 'лизинг') + ' · ' + C.name + ' ' + r.x.name + ' · аванс ' + st.adv + ' % · ' + TERM[st.term] + ' · ≈ ' + fmt(r.pay) + ' $/мес · ' + (f.elements.name && f.elements.name.value.trim() ? f.elements.name.value.trim() + ', ' : '') + tel.value + ' (в прототипе никуда не уходит)';
       });
     }
     draw();
   });
 
-  /* тема */
-  var tb = $('#tema');
+  /* тема – только на отдельной странице вариантов; в карточке кнопкой темы управляет karta.js */
+  var tb = $('#tema'); if (!tb || d.getElementById('hd')) return;
   function ic() { tb.textContent = root.getAttribute('data-theme') === 'dark' ? '☀' : '☾' }
   tb.addEventListener('click', function () { var n = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', n); try { localStorage.setItem('tema-evk', n) } catch (e) {} ic() }); ic();
 })();
