@@ -15,3 +15,6 @@ html[data-theme=light] .td .td-car{background:radial-gradient(70% 60% at 50% 62%
 .ob .of.big img{aspect-ratio:16/8}
 @media (min-width:761px){.cmp-pick{display:none}}
 .hero-m,.hero-i{min-width:0}.sw{flex-wrap:wrap}.dots{flex-wrap:wrap}
+
+/* блок лизинга со своей заявкой */
+.lz-f{margin-top:4px}.lz-f .w-field{margin-top:4px}.lz-f .w-check{margin:12px 0 16px}

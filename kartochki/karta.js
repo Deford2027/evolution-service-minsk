@@ -18,7 +18,7 @@
     return out.map(function (o) { var main = o.rows.filter(function (r) { return !/Утилиз|Таможенный сбор/.test(r.name) }); return { title: o.title, byn: main.reduce(function (s, r) { return s + r.byn }, 0), note: o.note } });
   }
 
-  var S = { goal: 'raschet', ver: '', bat: '', color: (C.colors[0] || [])[1] || '', build: '', lzA: '20', lzT: '36' };
+  var S = { goal: 'raschet', ver: '', bat: '', color: (C.colors[0] || [])[1] || '', build: '', lzA: '20', lzT: '36', lzK: 'lizing' };
 
   /* тема: вечером тёмная сама, кнопка запоминает */
   var tb = $('#tema');
@@ -171,8 +171,12 @@
 
   /* лизинг */
   function chips(id, key, after) { $$('#' + id + ' button').forEach(function (b) { b.addEventListener('click', function () { $$('#' + id + ' button').forEach(function (x) { x.classList.toggle('on', x === b) }); var k = Object.keys(b.dataset)[0]; S[key] = b.dataset[k]; if (after) after() }) }) }
-  chips('lz-a', 'lzA', lz); chips('lz-t', 'lzT', lz);
-  function lz() { $('#lz-s').textContent = 'аванс ' + S.lzA + ' %, ' + ({ 24: '2 года', 36: '3 года', 60: '5 лет' })[S.lzT] }
+  var LZT = { 24: '2 года', 36: '3 года', 60: '5 лет' };
+  chips('lz-a', 'lzA', lz); chips('lz-t', 'lzT', lz); chips('lz-k', 'lzK', lz);
+  function lz() {
+    $('#lz-s').textContent = (S.lzK === 'kredit' ? 'кредит' : 'лизинг') + ' · аванс ' + S.lzA + ' %, ' + LZT[S.lzT];
+    var t = $('#lz-f .t'); if (t) t.textContent = S.lzK === 'kredit' ? 'Получить расчёт кредита' : 'Получить график платежей';
+  }
 
   /* форма: кнопка активна только с галочкой; цель, версия, цвет и сборка уходят в заявку */
   var fm = $('#fm'), tel = fm.tel, sub = $('button[type=submit]', fm);
@@ -201,6 +205,25 @@
     $('.w-success', fm).hidden = false; sub.hidden = true;
     $('#done-v').textContent = 'В заявке: ' + parts.filter(Boolean).join(' · ') + ' · страница ' + location.pathname + (utm.length ? ' · ' + utm.join(', ') : '') + ' (в прототипе никуда не уходит)';
   });
+
+  /* заявка прямо из блока лизинга: аванс, срок, версия и сборка уходят вместе с телефоном */
+  var lf = $('#lz-f');
+  if (lf) {
+    var lt = lf.tel, ls = $('button[type=submit]', lf);
+    lt.addEventListener('focus', function () { if (!lt.value) lt.value = '+375 (' });
+    lt.addEventListener('blur', function () { if (lt.value.replace(/\D/g, '').length <= 3) lt.value = '' });
+    lt.addEventListener('input', function () { lt.value = mask(lt.value); lt.closest('.w-field').classList.remove('bad') });
+    lf.agree.addEventListener('change', function () { ls.disabled = !lf.agree.checked });
+    lf.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (lt.value.replace(/\D/g, '').length < 12) { lt.closest('.w-field').classList.add('bad'); lt.focus(); return }
+      if (lf.website.value) return;
+      var parts = [(S.lzK === 'kredit' ? 'Кредит' : 'Лизинг') + ': аванс ' + S.lzA + ' %, срок ' + LZT[S.lzT],
+        S.ver ? C.name + ' ' + S.ver + (S.bat ? ' ' + S.bat : '') : C.name + ', версия не выбрана', S.color, S.build ? 'сборка: ' + S.build : '', lt.value];
+      $('.w-success', lf).hidden = false; ls.hidden = true;
+      $('#lz-done').textContent = 'В заявке: ' + parts.filter(Boolean).join(' · ') + ' · страница ' + location.pathname + ' (в прототипе никуда не уходит)';
+    });
+  }
 
   /* окно «Связаться» */
   function closeS() { $$('.sheet.open').forEach(function (s) { s.classList.remove('open'); s.setAttribute('aria-hidden', 'true') }); lock(false) }
