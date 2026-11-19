@@ -290,3 +290,13 @@
   function upd() { document.body.classList.toggle('tb', hero.getBoundingClientRect().bottom < innerHeight * 0.4) }
   addEventListener('scroll', upd, { passive: true }); upd();
 })();
+
+/* Отзывы: стрелки карусели (на телефоне – свайп и счётчик ленты) */
+(function () {
+  var lane = document.querySelector('.otz'); if (!lane) return;
+  var btns = [].slice.call(document.querySelectorAll('[data-otz]'));
+  var step = function () { var c = lane.children[0]; return c ? c.getBoundingClientRect().width + 16 : lane.clientWidth };
+  var upd = function () { var max = lane.scrollWidth - lane.clientWidth - 4; btns.forEach(function (b) { b.disabled = +b.dataset.otz < 0 ? lane.scrollLeft <= 4 : lane.scrollLeft >= max }) };
+  btns.forEach(function (b) { b.addEventListener('click', function () { lane.scrollBy({ left: +b.dataset.otz * step(), behavior: 'smooth' }) }) });
+  lane.addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+})();
