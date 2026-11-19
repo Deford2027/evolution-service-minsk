@@ -46,6 +46,13 @@
   $('[data-seo-close]').addEventListener('click', function () { seoOpen(false) });
   seo.addEventListener('click', function (e) { if (e.target === seo) seoOpen(false) });
 
+  /* две карточки в разделе обзора – рядом в одной сетке (правило проекта, 19.11.2026) */
+  $$('.ob').forEach(function (ob) {
+    var og = $('.og', ob); if (!og) return;
+    var inner = $$('.of', og), prev = og.previousElementSibling;
+    if (inner.length === 1 && prev && prev.classList.contains('of')) { prev.classList.remove('big'); og.insertBefore(prev, og.firstChild) }
+  });
+
   /* цвет кузова: официальные рендеры из конфигуратора */
   var stage = $('#stage'), dots = $('#dots'), colorKey = 'evk-color-' + C.proj;
   dots.innerHTML = C.colors.map(function (c, i) { return '<button type="button" role="radio" aria-label="' + c[1] + '" aria-checked="' + !i + '" data-c="' + c[0] + '"' + (c[3] ? ' style="background-image:url(' + c[3] + ')"' : '') + (i ? '' : ' class="on"') + '></button>' }).join('');
