@@ -137,13 +137,8 @@
   $$('#cmp tbody[data-g]').forEach(function (g) { $('.gh button', g).addEventListener('click', function () { g.classList.toggle('cl') }) });
   $('#all-open').addEventListener('click', function () { var any = $$('#cmp tbody.cl').length; $$('#cmp tbody[data-g]').forEach(function (g) { g.classList.toggle('cl', !any) }); this.textContent = any ? 'Свернуть все группы' : 'Раскрыть все группы' });
 
-  /* конфигуратор: фрейм с того же домена tema-mail.github.io – сборка уходит в чек и форму */
-  var cfg = $('#cfg'), frame = null, cfgVer = C.cfgDef;
-  function hook() {
-    try {
-      var w = frame.contentWindow, doc = frame.contentDocument; if (!doc || !doc.body) return;
-      var fit = function () { frame.style.height = mob() ? Math.max(640, doc.documentElement.scrollHeight) + 'px' : Math.min(900, Math.max(700, innerHeight - 110)) + 'px' };
-      fit(); addEventListener('resize', fit); if (w.ResizeObserver) new w.ResizeObserver(fit).observe(doc.body);
+  /* конфигуратор: встроен в страницу ([data-z9]) или, по-старому, во фрейме */
+  var cfg = $('#cfg'), frame = null, cfgVer = C.cfgDef, inl = cfg && $('[data-z9]', cfg);
       var take = function (det) {
         if (!det) return; S.build = det.text || '';
         $('#build-t').textContent = (det.lines || []).map(function (l) { return l[1] }).join(' · ') || det.text;
@@ -154,17 +149,23 @@
           if (bk > -1) cardUpd(cards[k], bk); pickVer(k, bk > -1 ? bk : +cards[k].dataset.b);
         });
       };
+  function hook() {
+    try {
+      var w = frame.contentWindow, doc = frame.contentDocument; if (!doc || !doc.body) return;
+      var fit = function () { frame.style.height = mob() ? Math.max(640, doc.documentElement.scrollHeight) + 'px' : Math.min(900, Math.max(700, innerHeight - 110)) + 'px' };
+      fit(); addEventListener('resize', fit); if (w.ResizeObserver) new w.ResizeObserver(fit).observe(doc.body);
       doc.addEventListener('zeekr:change', function (e) { take(e.detail) });
       if (w.ZeekrCfg) take(w.ZeekrCfg.get());
     } catch (e) { /* фрейм с другого адреса – работает сам, без связи с формой */ }
   }
   function loadCfg(id) {
+    if (inl) { if (id && window.ZeekrCfg && ZeekrCfg.setVersion) ZeekrCfg.setVersion(id); return }
     cfgVer = id || cfgVer; $$('#cfg-seg button').forEach(function (b) { b.classList.toggle('on', b.dataset.v === cfgVer) });
     if (!frame) { frame = d.createElement('iframe'); frame.title = 'Конфигуратор ' + C.name; frame.onload = function () { var w = $('.wait', cfg); if (w) w.remove(); hook() }; cfg.appendChild(frame) }
     frame.src = cfg.dataset.src + '?v=' + cfgVer + '#v=' + cfgVer;
   }
   var cio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { cio.disconnect(); if (!frame && !mob()) loadCfg() } }, { rootMargin: '600px 0px' });
-  cio.observe(cfg);
+  if (inl) { d.addEventListener('zeekr:change', function (e) { take(e.detail) }); if (window.ZeekrCfg) take(ZeekrCfg.get()) } else cio.observe(cfg);
   $$('#cfg-seg button').forEach(function (b) { b.addEventListener('click', function () { loadCfg(b.dataset.v) }) });
   d.addEventListener('click', function (e) { var a = e.target.closest('[data-cfg]'); if (a) { cio.disconnect(); loadCfg(a.dataset.cfg) } });
 
