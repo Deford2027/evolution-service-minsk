@@ -231,3 +231,9 @@ figure.w-stack > .w-photo { max-height: none; aspect-ratio: 4 / 3; }
 .mk-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px 40px; margin-bottom: 8px; }
 .mk-head h2 { margin: 0; }
 @media (max-width: 1080px) { .mk-head { flex-direction: column; align-items: stretch; } .mk-head .mk-find { flex-basis: auto; } }
+
+/* Запись: форма и карта одной высоты */
+#zapis .w-two { align-items: stretch; }
+#zapis .w-two > .w-stack { display: flex; flex-direction: column; }
+#zapis .w-two > .w-stack .map--in { flex: 1 1 auto; min-height: 280px; margin-top: 6px; align-items: flex-end; padding: 20px 20px 44px; }
+@media (max-width: 1080px) { #zapis .w-two > .w-stack .map--in { flex: none; height: 320px; } }
