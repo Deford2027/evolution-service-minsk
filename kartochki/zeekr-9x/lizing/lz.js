@@ -55,8 +55,10 @@
       $$('[data-prog]', box).forEach(function (p) { p.style.setProperty('--k', (cur + 1) / steps.length) });
       $$('[data-stepn]', box).forEach(function (e) { e.textContent = 'Шаг ' + (cur + 1) + ' из ' + steps.length });
       $$('[data-dot]', box).forEach(function (e, j) { e.classList.toggle('on', j <= cur) });
-      $$('[data-prev]', box).forEach(function (b) { b.hidden = cur === 0 });
-      $$('[data-next]', box).forEach(function (b) { b.hidden = cur === steps.length - 1 });   // на последнем шаге – только кнопка заявки
+      var last = cur === steps.length - 1;   // на последнем шаге – только кнопка заявки, без «Назад» и «Далее»
+      $$('[data-prev]', box).forEach(function (b) { b.hidden = cur === 0 || last });
+      $$('[data-next]', box).forEach(function (b) { b.hidden = last });
+      $$('.lz-nav', box).forEach(function (n) { n.hidden = last });
     }
     if (steps.length) go(0);
 

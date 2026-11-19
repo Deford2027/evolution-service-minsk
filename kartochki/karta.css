@@ -32,3 +32,7 @@ html[data-theme=light] .td .td-car{background:radial-gradient(70% 60% at 50% 62%
 @media (max-width:760px){.ord{grid-template-columns:1fr}}
 /* лизинг в карточке */
 .lz-in{margin-top:28px}
+/* «Что если пойдёт не так» – карточки с картинкой */
+.risk .w-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.risk-im{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:var(--line)}
+.risk-t{padding:20px 22px 24px}
