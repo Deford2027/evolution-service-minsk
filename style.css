@@ -695,3 +695,35 @@ html.anim .split__img.a-pic:not(.is-in), html.anim .why__img.a-pic:not(.is-in) {
   .hero__img[src*="hero/proshivka.webp"] { --hpos: 80% 50%; }
   .hero__img[src*="hero/prilozheniya.webp"] { --hpos: 80% 50%; }
 }
+
+/* Блок «Как нас найти» */
+.cont__card { gap: 0; }
+.ci { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; }
+.ci li { display: flex; gap: 14px; align-items: flex-start; min-width: 0; }
+.ci i { flex: 0 0 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; background: rgba(11,68,66,.08); color: var(--green); }
+.ci i svg { width: 21px; height: 21px; }
+.ci div { display: grid; gap: 2px; min-width: 0; }
+.ci small { font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.ci b { font-weight: 500; font-size: 16px; color: var(--ink2); }
+.ci span { font-size: 13px; color: var(--muted); }
+.ci a { font-size: 14px; color: var(--green); overflow-wrap: anywhere; }
+.ci a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ci .ci__big { font: 500 18px var(--font); color: var(--ink2); }
+.ci a[href^="mailto"] { font-size: 13px; overflow-wrap: normal; white-space: nowrap; }
+.ci-act { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+.ci-act .btn { min-height: 50px; padding: 12px 24px; }
+.ci-msg { display: inline-flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 18px; border-radius: var(--r-btn); border: 1px solid var(--line); font-weight: 500; font-size: 15px; color: var(--ink2); transition: border-color .2s, background .2s; }
+.ci-msg svg { width: 18px; height: 18px; color: var(--green); }
+.ci-msg:hover { border-color: var(--green); background: rgba(11,68,66,.04); }
+.ci-rate { display: flex; align-items: center; gap: 10px; margin-top: auto; padding: 14px 16px; border-radius: 12px; background: var(--bg); font-size: 13px; color: var(--muted); transition: background .2s; }
+.cont__card .ci-act + .ci-rate { margin-top: 24px; }
+.ci-rate b { font-size: 16px; color: var(--ink2); }
+.ci-rate em { margin-left: auto; font-style: normal; font-size: 18px; color: var(--muted); }
+.ci-rate:hover { background: #e2e6eb; }
+@media (max-width: 767px) {
+  .ci { grid-template-columns: 1fr; gap: 16px; }
+  .ci-act { display: grid; grid-template-columns: 1fr 1fr; }
+  .ci-act .btn { grid-column: 1 / -1; }
+  .ci-msg { justify-content: center; }
+  .ci-rate { flex-wrap: wrap; }
+}
