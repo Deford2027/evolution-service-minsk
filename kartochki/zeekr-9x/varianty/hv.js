@@ -51,9 +51,9 @@
   function setV(v) {
     root.setAttribute('data-hv', v);
     $$('.hv-pick button').forEach(function (b) { b.classList.toggle('on', b.dataset.v === v) });
-    try { localStorage.setItem('hv-zeekr-9x', v) } catch (e) {}
+    try { localStorage.setItem('hv2-zeekr-9x', v) } catch (e) {}
     try { history.replaceState(null, '', '#' + v) } catch (e) {}
   }
   pick.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { setV(b.dataset.v) } });
-  setV(root.getAttribute('data-hv') || 'a');
+  setV(root.getAttribute('data-hv') || 'e');
 })();
