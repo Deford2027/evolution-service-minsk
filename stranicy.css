@@ -226,3 +226,8 @@ figure.w-stack > .w-photo { max-height: none; aspect-ratio: 4 / 3; }
   .hero__img[src*="hero-zeekr"] { --hpos: 50% 60%; }
   .hero__img[src*="about-diag"] { --hpos: 60% 50%; }
 }
+
+/* Блок марок (как на главной) на внутренних страницах */
+.mk-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px 40px; margin-bottom: 8px; }
+.mk-head h2 { margin: 0; }
+@media (max-width: 1080px) { .mk-head { flex-direction: column; align-items: stretch; } .mk-head .mk-find { flex-basis: auto; } }
