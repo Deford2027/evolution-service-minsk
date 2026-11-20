@@ -3,13 +3,33 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  // Меню на узких экранах
-  var hdr = $('.hdr'), burger = $('.menu-btn');
-  if (burger) burger.addEventListener('click', function () {
-    var o = hdr.classList.toggle('open'); burger.setAttribute('aria-expanded', o);
-  });
-  $$('.mnu a').forEach(function (a) { a.addEventListener('click', function () { hdr.classList.remove('open'); }); });
-  document.addEventListener('click', function (e) { if (!hdr.contains(e.target)) { hdr.classList.remove('open'); if (burger) burger.setAttribute('aria-expanded', false); } });
+  // Мега-меню: вкладки «Услуги / Марки / Компания», справа – подробности
+  var hdr = $('.hdr'), burger = $('.menu-btn'), mg = $('#mg');
+  var wide = window.matchMedia('(min-width: 901px)');
+  function mgSet(o) {
+    if (!mg) return;
+    mg.hidden = !o; hdr.classList.toggle('open', o);
+    if (burger) burger.setAttribute('aria-expanded', o);
+    document.body.classList.toggle('mg-lock', o);
+  }
+  if (burger && mg) burger.addEventListener('click', function (e) { e.stopPropagation(); mgSet(mg.hidden); });
+  if (mg) {
+    mg.addEventListener('click', function (e) { if (e.target === mg) mgSet(false); });
+    var mgTabs = $$('[data-tab]', mg);
+    mgTabs.forEach(function (t) { t.addEventListener('click', function () {
+      mgTabs.forEach(function (x) { x.classList.toggle('is-on', x === t); document.getElementById(x.dataset.tab).hidden = x !== t; });
+    }); });
+    $$('.mg-tab', mg).forEach(function (tab) {
+      var rows = $$('[data-pane]', tab), tmr;
+      function show(r) { rows.forEach(function (x) { x.classList.toggle('is-on', x === r); document.getElementById(x.dataset.pane).hidden = x !== r; }); }
+      rows.forEach(function (r) {
+        r.addEventListener('mouseenter', function () { if (!wide.matches) return; clearTimeout(tmr); tmr = setTimeout(function () { show(r); }, 70); });
+        r.addEventListener('focus', function () { if (wide.matches) show(r); });
+        r.addEventListener('click', function (e) { if (wide.matches) return; e.preventDefault(); show(r); tab.classList.add('is-deep'); $('.mg-detail', tab).scrollTop = 0; });
+      });
+      $$('.mg-back', tab).forEach(function (b) { b.addEventListener('click', function () { tab.classList.remove('is-deep'); }); });
+    });
+  }
   // Марки и модели: вкладки-логотипы и поиск модели
   var mk = $('.mk');
   if (mk) {
@@ -106,9 +126,9 @@
     else if (popBack && popBack.focus) popBack.focus({ preventScroll: true });
   }
   document.addEventListener('click', function (e) {
-    var a = e.target.closest('a[href="#zapis"]');
+    var a = e.target.closest('a[href="#zapis"], a[href="/evolution-service-minsk/#zapis"]');
     if (a && pop && !a.closest('.pop') && !a.closest('#zapis')) {
-      e.preventDefault();
+      e.preventDefault(); mgSet(false);
       var t = a.textContent.replace(/\s+/g, ' ').trim();
       setTimeout(function () { popSet(true, t); }, 0);
       return;
@@ -190,12 +210,12 @@
   function lbSet(src, alt) { if (src) { lbImg.src = src; lbImg.alt = alt || ''; } lb.classList.toggle('open', !!src); lb.setAttribute('aria-hidden', !src); document.body.style.overflow = src ? 'hidden' : ''; }
   $$('[data-zoom]').forEach(function (img) { img.addEventListener('click', function () { lbSet(img.currentSrc || img.src, img.alt); }); });
   lb.addEventListener('click', function (e) { if (e.target !== lbImg) lbSet(null); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { lbSet(null); sheetSet(false); hdr.classList.remove('open'); if (burger) burger.setAttribute('aria-expanded', false); } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { lbSet(null); sheetSet(false); mgSet(false); } });
 
   // Лёгкие анимации на всех страницах: блоки появляются при прокрутке, карточки в ряду – по очереди
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce && 'IntersectionObserver' in window) {
-    var AN = '.w-block h2, .w-block .w-title, .w-block .w-lead, .w-grid > *, .w-steps > li, .w-table-wrap, .w-fold-ul, .w-two > *, .w-faq > *, .w-block details, .w-links, .w-actions, .w-trust, .w-cta, .w-models, .ftr__in';
+    var AN = '.w-block h2, .w-block .w-title, .w-block .w-lead, .w-grid > *, .w-steps > li, .w-table-wrap, .w-fold-ul, .w-two > *, .w-faq > *, .w-block details, .w-links, .w-actions, .w-trust, .w-cta, .w-models, .ftr__in, .ff__in';
     var an = $$(AN).filter(function (el) { return !el.closest('.rv, .hero, .hero--in, .pop, .sheet') && !el.parentNode.closest('.w-grid > *, .w-two > *'); });
     document.documentElement.classList.add('anim');
     an.forEach(function (el) {
