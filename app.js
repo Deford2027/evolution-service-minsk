@@ -177,6 +177,16 @@
       var ok = $('.ok', f); if (ok) { ok.tabIndex = -1; ok.focus({ preventScroll: true }); ok.scrollIntoView({ block: 'center' }); } });
   });
 
+  // Слайдер отзывов: стрелки листают на одну карточку
+  $$('.revs--slide').forEach(function (l) {
+    var nav = l.parentNode.querySelector('.revs-nav'); if (!nav) return;
+    var bs = $$('button', nav);
+    function step() { var c = l.children[0]; return c ? c.getBoundingClientRect().width + 15 : 300; }
+    function upd() { bs[0].disabled = l.scrollLeft < 5; bs[1].disabled = l.scrollLeft + l.clientWidth > l.scrollWidth - 5; }
+    bs.forEach(function (b) { b.addEventListener('click', function () { l.scrollBy({ left: step() * +b.dataset.revs, behavior: 'smooth' }); }); });
+    l.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
+  });
+
   // Ленты вбок: счётчик «N / всего» и точки
   $$('.lenta').forEach(function (l) {
     var c = l.nextElementSibling;

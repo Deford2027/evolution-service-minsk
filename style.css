@@ -836,3 +836,31 @@ body.mg-lock { overflow: hidden; }
   .mg-form .btn { justify-self: stretch; }
   .mg-brandrow a { width: calc((100% - 12px) / 3); }
 }
+
+/* ── Отзывы: 2 или 3 колонки, слайдер при >3, фото из отзыва сверху */
+.revs--2 { grid-template-columns: repeat(2, 1fr); }
+.revs--3 { grid-template-columns: repeat(3, 1fr); }
+.rev__ph { display: grid; gap: 6px; margin: -14px -14px 0; }
+.rev__ph--2 { grid-template-columns: 1fr 1fr; }
+.rev__ph img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; cursor: zoom-in; display: block; }
+.rev__ph--1 img { aspect-ratio: 16 / 10; object-position: 50% 30%; }
+.rev small a { color: inherit; text-decoration: underline; }
+.revs-nav { display: inline-flex; gap: 6px; margin-left: 10px; }
+.revs-nav button { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--ink2); font-size: 22px; line-height: 1; cursor: pointer; transition: border-color .2s, opacity .2s; }
+.revs-nav button:hover { border-color: var(--green); color: var(--green); }
+.revs-nav button:disabled { opacity: .35; cursor: default; }
+@media (min-width: 768px) {
+  .revs--slide { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc((100% - 30px) / 3); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+  .revs--slide::-webkit-scrollbar { display: none; }
+  .revs--slide > * { scroll-snap-align: start; }
+}
+@media (min-width: 768px) and (max-width: 1080px) {
+  .revs--slide { grid-auto-columns: calc((100% - 15px) / 2); }
+  .revs--3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 767px) { .revs-nav { display: none; } }
+.revs--2 .rev__ph--1 img { aspect-ratio: auto; height: 260px; }
+@media (max-width: 767px) { .revs--2 .rev__ph--1 img { height: auto; aspect-ratio: 16 / 10; } }
+.revs-foot { display: flex; justify-content: flex-end; margin-top: 14px; }
+.revs-foot .revs-nav { margin-left: 0; }
+@media (max-width: 767px) { .revs-foot { display: none; } }
