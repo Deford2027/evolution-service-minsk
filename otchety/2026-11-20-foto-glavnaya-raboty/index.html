@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Отчёт: фото на главной</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #eceef1; --card: #ffffff; --ink: #16191c; --muted: #646a71; --line: #dfe2e6; --green: #1f4a45; --green-soft: #e3ecea;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #121517; --card: #1b1f22; --ink: #eef0f2; --muted: #9aa1a8; --line: #2b3034; --green: #6fb3a8; --green-soft: #1f2d2b; color-scheme: dark } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--font); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 32px 16px 48px; display: grid; gap: 14px; }
+.eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.eyebrow a { color: inherit; }
+h1 { margin: 0; font-weight: 500; font-size: clamp(28px, 6vw, 40px); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+.lead { margin: 0; color: var(--muted); max-width: 62ch; }
+.card { background: var(--card); border-radius: 16px; padding: 22px; display: grid; gap: 12px; min-width: 0; }
+.voice { background: var(--green); color: #fff; }
+.voice b { font-weight: 500; font-size: 18px; } .voice span { opacity: .8; font-size: 14px; }
+audio { width: 100%; }
+h2 { margin: 0; font-weight: 500; font-size: 20px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pair figure { margin: 0; display: grid; gap: 6px; min-width: 0; }
+.pair img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; display: block; }
+.pair figcaption { font-size: 13px; color: var(--muted); }
+.pair figure:last-child figcaption { color: var(--green); font-weight: 500; }
+ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+a { color: var(--green); }
+.note { border: 1px solid var(--line); background: transparent; }
+@media (max-width: 520px) { .pair { grid-template-columns: 1fr; } }
+.tag { display: inline-block; vertical-align: middle; margin-left: 6px; padding: 2px 8px; border-radius: 20px; font-size: 12px; font-weight: 500; background: var(--green-soft); color: var(--green); }
+.tag.gen { background: #f6e7d8; color: #8a4b12; }
+@media (prefers-color-scheme: dark) { .tag.gen { background: #3a2a1c; color: #f0b27a; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow"><a href="../">Отчёты</a> · Evolution Car Service · 20 ноября 2026</p>
+  <h1>Новые фото в блоке «Наш техцентр и работы» на главной</h1>
+  <p class="lead">Заменены все 8 фото: 5 настоящих из фотобанка и 3 сгенерированных в стиле вашего зала там, где подходящего снимка не было.</p>
+
+  <div class="card voice">
+    <b>Голосовой отчёт</b><span>45 с</span>
+    <audio id="golos" controls preload="metadata" src="golos.mp3"></audio>
+  </div>
+
+  <div class="card">
+    <h2>Техцентр EVolution <span class="tag">фото из фотобанка</span></h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/works/r1-fasad.webp" alt="Было" loading="lazy"><figcaption>Было</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/home-fasad.webp" alt="Стало: фасад с вывеской, фото с Яндекс Карт" loading="lazy"><figcaption>Стало: фасад с вывеской, фото с Яндекс Карт</figcaption></figure>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Рабочая зона <span class="tag">фото из фотобанка</span></h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/works/r2-zona.webp" alt="Было" loading="lazy"><figcaption>Было</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/home-zona.webp" alt="Стало: зал с подъёмниками, оригинал с Яндекс Карт" loading="lazy"><figcaption>Стало: зал с подъёмниками, оригинал с Яндекс Карт</figcaption></figure>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Машина на подъёмнике <span class="tag">фото из фотобанка</span></h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/works/r3-podyemnik.webp" alt="Было" loading="lazy"><figcaption>Было</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/home-podyemnik.webp" alt="Стало: белый электромобиль на подъёмнике, Google Диск, номер размыт" loading="lazy"><figcaption>Стало: белый электромобиль на подъёмнике, Google Диск, номер размыт</figcaption></figure>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Мастера за работой <span class="tag gen">сгенерировано</span></h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/works/r4-mastera.webp" alt="Было" loading="lazy"><figcaption>Было</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/home-mastera.webp" alt="Стало: два мастера у подъёмника" loading="lazy"><figcaption>Стало: два мастера у подъёмника</figcaption></figure>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Плановое ТО <span class="tag">фото из фотобанка</span></h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/works/r5-to.webp" alt="Было" loading="lazy"><figcaption>Было</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/home-to.webp" alt="Стало: машина с открытым капотом, Google Диск, номер размыт" loading="lazy"><figcaption>Стало: машина с открытым капотом, Google Диск, номер размыт</figcaption></figure>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Мультимедиа <span class="tag gen">сгенерировано</span></h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/works/r6-multimedia.webp" alt="Было" loading="lazy"><figcaption>Было</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/home-multimedia.webp" alt="Стало: экран с навигацией на русском" loading="lazy"><figcaption>Стало: экран с навигацией на русском</figcaption></figure>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Запчасти из Китая <span class="tag gen">сгенерировано</span></h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/works/r7-sklad.webp" alt="Было" loading="lazy"><figcaption>Было</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/home-zapchasti.webp" alt="Стало: мастер сверяет запчасти по накладной" loading="lazy"><figcaption>Стало: мастер сверяет запчасти по накладной</figcaption></figure>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Зал выдачи <span class="tag">фото из фотобанка</span></h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/works/r8-zal.webp" alt="Было" loading="lazy"><figcaption>Было</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/home-zal.webp" alt="Стало: ресепшен и машины, фото с Яндекс Карт" loading="lazy"><figcaption>Стало: ресепшен и машины, фото с Яндекс Карт</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Подробности</h2>
+    <ul>
+      <li>На двух настоящих фото (машина на подъёмнике, плановое ТО) размыты госномера.</li>
+      <li>Сгенерированные кадры сделаны через Codex по образцу ваших фото зала: красный кирпич, чёрные фермы, подъёмники. Логотипов и номеров нет, лиц крупно нет.</li>
+      <li>В подзаголовке блока было «Живые фото техцентра…». Часть фото теперь сгенерирована, поэтому слово «живые» убрано.</li>
+      <li>Фото обрезаны под 4:3 и сжаты в WebP. Проверено на компьютере. <a href="https://deford2027.github.io/evolution-service-minsk/#raboty" target="_blank" rel="noopener">Посмотреть блок на сайте</a>.</li>
+    </ul>
+  </div>
+
+  <div class="card note">
+    <h2>Что дальше</h2>
+    <p style="margin:0">Когда появятся настоящие фото мастеров за работой, экрана мультимедиа после русификации и запчастей, заменю сгенерированные. Старые фото на внутренних страницах (блок «Наш техцентр и работы» там свой) не трогал.</p>
+  </div>
+</div>
+</body>
+</html>
