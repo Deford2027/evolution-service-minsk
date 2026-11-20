@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Отчёт: отзывы на сайте</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #eceef1; --card: #ffffff; --ink: #16191c; --muted: #646a71; --line: #dfe2e6; --green: #1f4a45; --green-soft: #e3ecea;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #121517; --card: #1b1f22; --ink: #eef0f2; --muted: #9aa1a8; --line: #2b3034; --green: #6fb3a8; --green-soft: #1f2d2b; color-scheme: dark } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--font); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 32px 16px 48px; display: grid; gap: 14px; }
+.eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.eyebrow a { color: inherit; }
+h1 { margin: 0; font-weight: 500; font-size: clamp(28px, 6vw, 40px); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+.lead { margin: 0; color: var(--muted); max-width: 62ch; }
+.card { background: var(--card); border-radius: 16px; padding: 22px; display: grid; gap: 12px; min-width: 0; }
+.voice { background: var(--green); color: #fff; }
+.voice b { font-weight: 500; font-size: 18px; } .voice span { opacity: .8; font-size: 14px; }
+audio { width: 100%; }
+h2 { margin: 0; font-weight: 500; font-size: 20px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pair figure { margin: 0; display: grid; gap: 6px; min-width: 0; }
+.pair img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; display: block; }
+.pair figcaption { font-size: 13px; color: var(--muted); }
+.pair figure:last-child figcaption { color: var(--green); font-weight: 500; }
+ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+a { color: var(--green); }
+.note { border: 1px solid var(--line); background: transparent; }
+@media (max-width: 520px) { .pair { grid-template-columns: 1fr; } }
+.shot { width: 100%; border-radius: 12px; display: block; border: 1px solid var(--line); }
+table { width: 100%; border-collapse: collapse; font-size: 15px; } td, th { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); } th { color: var(--muted); font-weight: 500; } td:last-child { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow"><a href="../">Отчёты</a> · Evolution Car Service · 20 ноября 2026</p>
+  <h1>Единый блок отзывов на всех страницах</h1>
+  <p class="lead">Отзывы оформлены как на главной: звёзды, заголовок, текст, имя, дата и ссылка на Яндекс Карты. Раскладка зависит от числа отзывов, отзывы с фото идут первыми.</p>
+
+  <div class="card voice">
+    <b>Голосовой отчёт</b><span>56 с</span>
+    <audio id="golos" controls preload="metadata" src="golos.mp3"></audio>
+  </div>
+
+  <div class="card">
+    <h2>Правило раскладки</h2>
+    <table>
+      <tr><th>Отзывов на странице</th><th>Как показано</th><th>Страниц</th></tr>
+      <tr><td>0–1</td><td>блок убран</td><td>104</td></tr>
+      <tr><td>2</td><td>2 колонки</td><td>102</td></tr>
+      <tr><td>3</td><td>3 колонки</td><td>53</td></tr>
+      <tr><td>4–10</td><td>слайдер со стрелками</td><td>1 (главная)</td></tr>
+    </table>
+    <p style="margin:0;color:var(--muted);font-size:14px">На телефоне отзывы всегда листаются вбок со счётчиком. Больше 10 отзывов на страницу не ставится.</p>
+  </div>
+
+  <div class="card">
+    <h2>Главная: слайдер, отзывы с фото первыми</h2>
+    <img class="shot" src="r-home.webp" alt="Блок отзывов на главной" loading="lazy">
+  </div>
+
+  <div class="card">
+    <h2>Страница с двумя отзывами</h2>
+    <img class="shot" src="r-2.webp" alt="Блок из двух отзывов" loading="lazy">
+  </div>
+
+  <div class="card">
+    <h2>Отзывы с фото с Яндекс Карт</h2>
+    <ul>
+      <li><b>Дмитрий Михадюк</b>, 4 сентября 2024: отзыв уже был на сайте, добавлено его фото.</li>
+      <li><b>Дмитрий Финов</b>, 1 марта 2024, про русификацию: новый отзыв с двумя фото. Добавлен на главную и на страницы русификации.</li>
+      <li>Другие отзывы с фото на открытой странице Яндекс Карт не нашлись. Тексты и фото сохранены в фотобанке, папка otzyvy.</li>
+      <li>Каждому отзыву дан короткий заголовок по смыслу, например «Про замену шаровой». Тексты отзывов не менялись.</li>
+    </ul>
+  </div>
+
+  <div class="card note">
+    <h2>Нужно решение</h2>
+    <p style="margin:0">На фото Финова зал бело-синий, а не кирпичный. Похоже, это адрес 4-й пер. Монтажников, 13, к которому привязана карточка с отзывами. Если это старое место и такие фото не нужны, скажите: уберу фото или весь отзыв.</p>
+  </div>
+</div>
+</body>
+</html>
