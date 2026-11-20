@@ -864,3 +864,6 @@ body.mg-lock { overflow: hidden; }
 .revs-foot { display: flex; justify-content: flex-end; margin-top: 14px; }
 .revs-foot .revs-nav { margin-left: 0; }
 @media (max-width: 767px) { .revs-foot { display: none; } }
+
+/* Фото моделей на первом экране: машина в правой части кадра – на телефоне показываем правую часть */
+@media (max-width: 767px) { .hero__img[src*="/hero/model-"] { object-position: 94% 50%; } }
