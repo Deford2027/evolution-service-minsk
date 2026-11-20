@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Отчёт: логотипы в меню</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Отчёт в стиле сайта Evolution: светлый серый фон, белые карточки, тёмно-зелёный акцент */
+:root {
+  --bg: #eceef1; --card: #ffffff; --ink: #16191c; --muted: #646a71; --line: #dfe2e6; --green: #1f4a45; --green-soft: #e3ecea;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121517; --card: #1b1f22; --ink: #eef0f2; --muted: #9aa1a8; --line: #2b3034; --green: #6fb3a8; --green-soft: #1f2d2b; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121517; --card: #1b1f22; --ink: #eef0f2; --muted: #9aa1a8; --line: #2b3034; --green: #6fb3a8; --green-soft: #1f2d2b; color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--font); }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 32px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 14px; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { margin: 0; font-weight: 500; font-size: clamp(28px, 6vw, 40px); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+.lead { margin: 0; color: var(--muted); max-width: 62ch; }
+.card { background: var(--card); border-radius: 16px; padding: 22px; display: grid; gap: 12px; min-width: 0; }
+.voice { background: var(--green); color: #fff; }
+.voice b { font-weight: 500; font-size: 18px; }
+.voice span { opacity: .8; font-size: 14px; }
+audio { width: 100%; }
+h2 { margin: 0; font-weight: 500; font-size: 20px; }
+.nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.num { background: var(--green-soft); border-radius: 12px; padding: 14px; }
+.num b { display: block; font-size: 28px; font-weight: 500; font-variant-numeric: tabular-nums; color: var(--green); }
+.num span { font-size: 13px; color: var(--muted); }
+ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+a { color: var(--green); }
+code { font-size: 14px; background: var(--green-soft); padding: 1px 6px; border-radius: 6px; word-break: break-all; }
+.note { border: 1px solid var(--line); background: transparent; }
+@media (max-width: 520px) { .nums { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Evolution Car Service · Минск · 20 ноября 2026</p>
+  <h1>Логотипы в меню ведут на страницу услуги для марки</h1>
+  <p class="lead">Во вкладке «Услуги» мега-меню каждый логотип теперь открывает страницу этой услуги для этой марки. Например, ТО + Geely открывает «ТО Geely».</p>
+
+  <div class="card voice">
+    <b>Голосовой отчёт</b><span>1 минута 15 секунд</span>
+    <audio id="golos" controls preload="metadata" src="golos.mp3"></audio>
+  </div>
+
+  <div class="card">
+    <h2>В цифрах</h2>
+    <div class="nums">
+      <div class="num"><b>176</b><span>страниц «услуга + марка» (16 услуг × 11 марок)</span></div>
+      <div class="num"><b>41</b><span>было раньше</span></div>
+      <div class="num"><b>135</b><span>создано сейчас</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Что сделано</h2>
+    <ul>
+      <li>Все 176 логотипов во вкладке «Услуги» ведут на <code>/services/услуга/марка/</code>.</li>
+      <li>На новых страницах марка стоит в заголовке, в навигации и в кнопке записи. Вместо выбора марки показаны модели этой марки и ссылка на страницу марки.</li>
+      <li>Текст об услуге взят с основной страницы услуги. Цены, сроки и отзывы не придумывал: цену по-прежнему называем до начала работ.</li>
+      <li>На страницах услуг кнопка в панели марки ведёт на страницу услуги для этой марки, раньше она вела на страницу марки.</li>
+      <li>На страницах марок ссылки на услуги ведут на версию услуги для этой марки.</li>
+      <li>Проверено: битых ссылок на сайте нет, страницы нормально выглядят на компьютере и на телефоне.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Посмотреть</h2>
+    <ul>
+      <li><a href="https://deford2027.github.io/evolution-service-minsk/services/maintenance/geely/" target="_blank" rel="noopener">ТО Geely</a> (эта страница была и раньше)</li>
+      <li><a href="https://deford2027.github.io/evolution-service-minsk/services/suspension/zeekr/" target="_blank" rel="noopener">Ходовая и подвеска Zeekr</a> (новая)</li>
+      <li><a href="https://deford2027.github.io/evolution-service-minsk/services/software-update/avatr/" target="_blank" rel="noopener">Прошивка и обновление ПО Avatr</a> (новая)</li>
+    </ul>
+  </div>
+
+  <div class="card note">
+    <h2>На заметку</h2>
+    <p style="margin:0">На новых страницах нет таблицы «чем отличаются модели», которая есть на старых. Для неё нужны проверенные данные по каждой модели, поэтому я её не заполнял. Если нужно, соберу эти данные отдельно.</p>
+  </div>
+</div>
+</body>
+</html>
