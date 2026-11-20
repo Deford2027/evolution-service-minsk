@@ -64,3 +64,5 @@ html[data-theme=light] .td .td-car{background:radial-gradient(70% 60% at 50% 62%
 .otz-who a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 @media (max-width:1180px){.otz>.w-card{flex-basis:calc((100% - 16px) / 2.25)}}
 @media (max-width:760px){.otz>.w-card{flex-basis:84%}.otz-arr{display:none}.otz-hd{align-items:flex-start}}
+/* обзор: карточки с коллажами 4:3 – без обрезки краёв */
+.og .of.k43 img,.of.k43 img{aspect-ratio:4/3!important;object-fit:cover}
