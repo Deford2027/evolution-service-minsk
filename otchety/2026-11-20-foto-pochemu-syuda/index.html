@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Отчёт: фото в «Почему сюда»</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #eceef1; --card: #ffffff; --ink: #16191c; --muted: #646a71; --line: #dfe2e6; --green: #1f4a45; --green-soft: #e3ecea;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #121517; --card: #1b1f22; --ink: #eef0f2; --muted: #9aa1a8; --line: #2b3034; --green: #6fb3a8; --green-soft: #1f2d2b; color-scheme: dark } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--font); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 32px 16px 48px; display: grid; gap: 14px; }
+.eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.eyebrow a { color: inherit; }
+h1 { margin: 0; font-weight: 500; font-size: clamp(28px, 6vw, 40px); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+.lead { margin: 0; color: var(--muted); max-width: 62ch; }
+.card { background: var(--card); border-radius: 16px; padding: 22px; display: grid; gap: 12px; min-width: 0; }
+.voice { background: var(--green); color: #fff; }
+.voice b { font-weight: 500; font-size: 18px; } .voice span { opacity: .8; font-size: 14px; }
+audio { width: 100%; }
+h2 { margin: 0; font-weight: 500; font-size: 20px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pair figure { margin: 0; display: grid; gap: 6px; min-width: 0; }
+.pair img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; display: block; }
+.pair figcaption { font-size: 13px; color: var(--muted); }
+.pair figure:last-child figcaption { color: var(--green); font-weight: 500; }
+ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+a { color: var(--green); }
+.note { border: 1px solid var(--line); background: transparent; }
+@media (max-width: 520px) { .pair { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow"><a href="../">Отчёты</a> · Evolution Car Service · 20 ноября 2026</p>
+  <h1>Настоящие фото в блоке «Почему владельцы выбирают нас»</h1>
+  <p class="lead">В блоке заменены три фотографии на снимки из фотобанка техцентра. Блок стоит на 259 страницах, фото заменены на всех.</p>
+
+  <div class="card voice">
+    <b>Голосовой отчёт</b><span>43 секунды</span>
+    <audio id="golos" controls preload="metadata" src="golos.mp3"></audio>
+  </div>
+
+  <div class="card">
+    <h2>Первый в Минске специализированный сервис</h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/works/r1-fasad.webp" alt="Было: синее здание" loading="lazy"><figcaption>Было: синее здание</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/why-fasad.webp" alt="Стало: фасад EVolution" loading="lazy"><figcaption>Стало: наш фасад с вывеской EVolution</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Дилерское оборудование для диагностики</h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/about-diag.webp" alt="Было" loading="lazy"><figcaption>Было: на разных страницах разные фото, в том числе чужие</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/why-diag.webp" alt="Стало: электромобиль на диагностике" loading="lazy"><figcaption>Стало: электромобиль с открытым капотом в нашем зале</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Каждый мастер знает высоковольтную систему питания</h2>
+    <div class="pair">
+      <figure><img src="/evolution-service-minsk/img/svc-diag.webp" alt="Было" loading="lazy"><figcaption>Было: мастер с ноутбуком (не наш зал)</figcaption></figure>
+      <figure><img src="/evolution-service-minsk/img/works/why-batareya.webp" alt="Стало: снятая высоковольтная батарея" loading="lazy"><figcaption>Стало: снятая высоковольтная батарея на стенде</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Подробности</h2>
+    <ul>
+      <li>Источники фото: фасад – оригинал с Яндекс Карт, диагностика и батарея – папка с Google Диска.</li>
+      <li>Кадры обрезаны под формат карточки 16:10 и сжаты в WebP, около 150 КБ каждый.</li>
+      <li>Проверено на компьютере и на телефоне. Пример страницы: <a href="https://deford2027.github.io/evolution-service-minsk/brands/voyah/dream/#otzyvy" target="_blank" rel="noopener">Voyah Dream</a>, блок ниже отзывов.</li>
+    </ul>
+  </div>
+
+  <div class="card note">
+    <h2>Что не менял</h2>
+    <p style="margin:0">Фото склада запчастей в Китае в карточке «Запчасти напрямую из Китая» оставил: оно подходит по смыслу, а похожих снимков в фотобанке нет. Блок «Почему сюда» на главной устроен иначе, его не трогал.</p>
+  </div>
+</div>
+</body>
+</html>
