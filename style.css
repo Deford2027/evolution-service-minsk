@@ -867,3 +867,13 @@ body.mg-lock { overflow: hidden; }
 
 /* Фото моделей на первом экране: машина в правой части кадра – на телефоне показываем правую часть */
 @media (max-width: 767px) { .hero__img[src*="/hero/model-"] { object-position: 94% 50%; } }
+
+/* Отзывы на телефоне: лента по одной карточке (revs--2/--3 не должны перебивать ленту) */
+@media (max-width: 767px) {
+  .revs.lenta, .revs--2.lenta, .revs--3.lenta, .revs--slide.lenta { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 86%; }
+  .revs > :last-child:nth-child(odd) { grid-column: auto; }
+  .rev { padding: 20px; gap: 12px; }
+  .rev__ph { margin: -8px -8px 0; }
+  .rev h3 { font-size: 18px; }
+  .rev p { font-size: 15px; line-height: 1.5; }
+}
