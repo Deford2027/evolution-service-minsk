@@ -883,3 +883,10 @@ body.mg-lock { overflow: hidden; }
   .lenta, .revs--slide, .mk-tabs, .mg-tabs, [data-mob=lenta] .w-grid { overflow-y: hidden; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
   [data-mob=lenta] .w-grid { padding-bottom: 4px; }
 }
+
+/* Подвал: юридическая информация (из подвала старого сайта на Тильде) */
+.ff-legal { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 14px 30px; padding: 20px 0; border-top: 1px solid var(--line); }
+.ff-legal p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--muted); overflow-wrap: anywhere; }
+.ff-legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.ff-legal a:hover { color: var(--ink2); }
+@media (max-width: 900px) { .ff-legal { grid-template-columns: 1fr; } }
