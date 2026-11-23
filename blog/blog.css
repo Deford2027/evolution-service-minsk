@@ -25,7 +25,8 @@
 
 /* --- статья --- */
 .bl-post { padding-top: 60px; }
-.bl-post__in { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 15px; align-items: start; }
+.bl-post__in { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 15px; align-items: start; }
+.bl-post__in > .bl-toc { order: 2; }
 .bl-toc { position: sticky; top: 100px; display: grid; gap: 14px; padding: 24px; border-radius: var(--r); background: #fff; }
 .bl-toc__h { font: 500 13px/1.3 var(--font); letter-spacing: .06em; text-transform: uppercase; color: var(--green); }
 .bl-toc ol { margin: 0; padding: 0 0 0 18px; display: grid; gap: 8px; font-size: 14px; line-height: 1.4; color: var(--ink2); }
@@ -35,7 +36,7 @@ main .bl-toc li a { color: inherit; text-decoration: none; }
 .bl-ask b { font-weight: 500; font-size: 15px; margin-bottom: 4px; }
 .bl-ask .btn { width: 100%; justify-content: center; }
 
-.bl-body { max-width: 860px; padding: 44px 52px 48px; border-radius: var(--r); background: #fff; color: var(--ink2); font-size: 17px; line-height: 1.65; }
+.bl-body { padding: 48px 56px 52px; border-radius: var(--r); background: #fff; color: var(--ink2); font-size: 17px; line-height: 1.65; }
 .bl-body > * + * { margin-top: 16px; }
 .bl-body .bl-lead { font-size: 19px; line-height: 1.55; color: var(--ink); }
 main .bl-body h2 { margin-top: 40px; font: 500 28px/1.2 var(--font); letter-spacing: -.5px; color: var(--ink); scroll-margin-top: 100px; }
@@ -46,6 +47,12 @@ main .bl-body h2 { margin-top: 40px; font: 500 28px/1.2 var(--font); letter-spac
 .bl-body a { color: var(--green); text-decoration: underline; text-underline-offset: 2px; }
 .bl-note { padding: 18px 22px; border-left: 3px solid var(--green); border-radius: 0 10px 10px 0; background: rgba(11,68,66,.06); color: var(--ink); }
 .bl-table { overflow-x: auto; }
+.bl-body > .bl-fig, .bl-body > .bl-figs { margin-top: 28px; margin-bottom: 12px; }
+.bl-fig { margin: 0; display: grid; gap: 10px; }
+.bl-fig img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r-img); background: #1b2120; cursor: zoom-in; }
+.bl-body > .bl-fig img { aspect-ratio: 21 / 9; }
+.bl-fig figcaption { font-size: 14px; line-height: 1.45; color: var(--muted); }
+.bl-figs { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .bl-table table { width: 100%; border-collapse: collapse; font-size: 15px; }
 .bl-table th, .bl-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; }
 .bl-table th { font-weight: 500; color: var(--muted); font-size: 13px; }
@@ -65,9 +72,9 @@ main .bl-cta h2 { color: #fff; font-size: 36px; letter-spacing: -1px; }
 
 @media (max-width: 1100px) {
   .bl-post__in { grid-template-columns: 1fr; }
+  .bl-post__in > .bl-toc { order: 0; }
   .bl-toc { position: static; }
   .bl-ask { display: none; }
-  .bl-body { max-width: none; }
 }
 @media (max-width: 900px) { .bl-links { grid-template-columns: 1fr; } }
 @media (max-width: 767px) {
@@ -76,6 +83,8 @@ main .bl-cta h2 { color: #fff; font-size: 36px; letter-spacing: -1px; }
   .bl-body { padding: 26px 20px 30px; font-size: 16px; }
   .bl-body .bl-lead { font-size: 17px; }
   main .bl-body h2 { margin-top: 30px; font-size: 23px; }
+  .bl-figs { grid-template-columns: 1fr; }
+  .bl-body > .bl-fig img { aspect-ratio: 16 / 10; }
   .bl-cta { padding: 28px 22px; }
   main .bl-cta h2 { font-size: 27px; }
   .bl-cta .w-actions, .bl-cta .btn { width: 100%; }
