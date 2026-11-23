@@ -207,6 +207,7 @@
         .then(function (r) { if (!r.ok) throw new Error(r.status); })
         .then(function () {
           btn.textContent = btnText; f.classList.add('sent');
+          if (window.evmGoal) evmGoal('zayavka', { form: data.form });
           var ok = $('.ok', f); if (ok) { ok.tabIndex = -1; ok.focus({ preventScroll: true }); ok.scrollIntoView({ block: 'center' }); }
         })
         .catch(function () {

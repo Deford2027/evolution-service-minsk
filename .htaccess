@@ -1,0 +1,44 @@
+# Хостинг hoster.by (Apache). На GitHub Pages этот файл не работает – только на хостинге.
+Options -Indexes
+AddDefaultCharset utf-8
+RewriteEngine On
+
+# Боевой домен: www → без www (как было на Тильде). HTTP → HTTPS включить после выпуска сертификата на evolutioncarservice.com
+RewriteCond %{HTTP_HOST} ^www\.evolutioncarservice\.com$ [NC]
+RewriteRule ^(.*)$ https://evolutioncarservice.com/$1 [R=301,L]
+
+# Старые адреса Тильды → новые страницы (301, чтобы не потерять позиции в поиске)
+RewriteRule ^zeekr001/?$ /brands/zeekr/001/ [R=301,L]
+RewriteRule ^zeekrx/?$ /brands/zeekr/x/ [R=301,L]
+RewriteRule ^zeekr009/?$ /brands/zeekr/009/ [R=301,L]
+RewriteRule ^zeekr11/?$ /brands/zeekr/009/ [R=301,L]
+RewriteRule ^avatr-11/?$ /brands/avatr/11/ [R=301,L]
+RewriteRule ^lixiangl7/?$ /brands/lixiang/l7/ [R=301,L]
+RewriteRule ^lixiangl8/?$ /brands/lixiang/l8/ [R=301,L]
+RewriteRule ^lixiangl9/?$ /brands/lixiang/l9/ [R=301,L]
+RewriteRule ^voyah-dreamer/?$ /brands/voyah/dream/ [R=301,L]
+RewriteRule ^voyahfree/?$ /brands/voyah/free/ [R=301,L]
+RewriteRule ^geelymonjaro/?$ /brands/geely/monjaro/ [R=301,L]
+RewriteRule ^bydhan/?$ /brands/byd/han/ [R=301,L]
+RewriteRule ^bydsong/?$ /brands/byd/song-plus/ [R=301,L]
+RewriteRule ^bydtang/?$ /brands/byd/tang/ [R=301,L]
+RewriteRule ^catalog/?$ /brands/ [R=301,L]
+RewriteRule ^obzor/?$ /brands/ [R=301,L]
+RewriteRule ^news/?$ /blog/ [R=301,L]
+RewriteRule ^termsofuse/?$ /terms-of-use/ [R=301,L]
+RewriteRule ^privacypolicy/?$ /privacy-policy/ [R=301,L]
+RewriteRule ^invite/?$ /about/ [R=301,L]
+RewriteRule ^franchise/?$ /about/ [R=301,L]
+RewriteRule ^thanks/?$ / [R=301,L]
+
+# Кэш статики
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
