@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/evolution-service-minsk/style.css?v=2239b80b">
 <style>
-:root { --mint: #6fc2b9; --mint2: #9fe0d8; }
+:root { --mint: #ffffff; --mint2: #9aa0a6; }
 body { padding-bottom: 100px; }
 .vnav { position: sticky; top: 0; z-index: 30; background: rgba(236,238,242,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .vnav .wrap { display: flex; gap: 6px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: none; }
@@ -45,7 +45,7 @@ body { padding-bottom: 100px; }
 .pill:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.2); }
 .pill::after { content: '›'; font-size: 16px; line-height: 1; }
 .show-m { display: none; }
-.pct { display: inline-block; padding: 2px 10px; border-radius: 6px; background: var(--mint); color: #062826; font-weight: 700; }
+.pct { display: inline-block; padding: 2px 10px; border-radius: 6px; background: var(--mint); color: var(--green); font-weight: 700; }
 .mute { color: rgba(255,255,255,.65); }
 
 /* 1 перелив */
@@ -68,7 +68,7 @@ body { padding-bottom: 100px; }
 /* 3 таймер */
 .b3 { background: #082f2e; gap: 10px 22px; }
 .b3__t { display: inline-flex; align-items: center; gap: 6px; }
-.b3__t span { display: grid; justify-items: center; min-width: 42px; padding: 4px 6px; border-radius: 8px; background: rgba(255,255,255,.08); border: 1px solid rgba(111,194,185,.35); font-variant-numeric: tabular-nums; }
+.b3__t span { display: grid; justify-items: center; min-width: 42px; padding: 4px 6px; border-radius: 8px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); font-variant-numeric: tabular-nums; }
 .b3__t span b { font-size: 16px; line-height: 1.1; }
 .b3__t span small { font-size: 10px; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .04em; }
 .b3__t em { font-style: normal; color: var(--mint); font-weight: 700; }
@@ -83,11 +83,11 @@ body { padding-bottom: 100px; }
 
 /* 5 чёрная с блеском */
 @keyframes shine { 0% { transform: translateX(-120%) skewX(-20deg); } 60%, 100% { transform: translateX(380%) skewX(-20deg); } }
-.b5 { background: #0c0f10; border-bottom: 1px solid rgba(111,194,185,.35); }
-.b5::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 30%; background: linear-gradient(90deg, transparent, rgba(111,194,185,.22), transparent); animation: shine 5s ease-in-out infinite; pointer-events: none; }
+.b5 { background: #0c0f10; border-bottom: 1px solid rgba(255,255,255,.18); }
+.b5::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 30%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.13), transparent); animation: shine 5s ease-in-out infinite; pointer-events: none; }
 .b5 .bfw { font-weight: 800; letter-spacing: .14em; font-size: 13px; background: linear-gradient(90deg, #fff 20%, var(--mint2) 50%, #fff 80%); background-size: 200% 100%; animation: flow 4s linear infinite; -webkit-background-clip: text; background-clip: text; color: transparent; }
 .b5 .big { font-weight: 700; color: var(--mint); font-size: 18px; }
-.b5 .pill { background: var(--mint); color: #062826; }
+.b5 .pill { background: #fff; color: var(--green); }
 
 /* 6 раскрывающаяся */
 .b6 { background: #0b4442; cursor: pointer; }
@@ -138,7 +138,7 @@ body { padding-bottom: 100px; }
 <div class="wrap">
 <div class="vintro">
   <h1>Black Friday: полоса над шапкой</h1>
-  <p>7 вариантов в цветах сайта: тёмно-зелёный, белый и мятный акцент, как у плашек и маркеров сайта. Анимация живая – так полоса будет выглядеть на сайте. У каждой есть крестик: если посетитель закрыл полосу, до конца визита она не появится. Кнопки ведут на страницу акции с условиями и формой.</p>
+  <p>7 вариантов в фирменных цветах сайта: тёмно-зелёный, чёрный и белый. <a href="glavnaya/" style="color:var(--green);text-decoration:underline">Вариант 5 на настоящей главной →</a> Анимация живая – так полоса будет выглядеть на сайте. У каждой есть крестик: если посетитель закрыл полосу, до конца визита она не появится. Кнопки ведут на страницу акции с условиями и формой.</p>
 </div>
 
 <section class="vsec" id="v1">
@@ -177,7 +177,7 @@ body { padding-bottom: 100px; }
 </section>
 
 <section class="vsec" id="v5">
-  <div class="vlabel"><b>5 · Чёрная с блеском</b><span>Чёрная полоса – отсылка к «чёрной пятнице», акценты мятные из сайта. По полосе раз в несколько секунд пробегает блик, надпись BLACK FRIDAY переливается.</span><i>Телефон: «BLACK FRIDAY −20 %» + кнопка</i></div>
+  <div class="vlabel"><b>5 · Чёрная с блеском</b><span>Чёрная полоса – отсылка к «чёрной пятнице», белый текст, кнопка в фирменном зелёном. <a href="glavnaya/" style="color:var(--green);text-decoration:underline">Посмотреть на главной</a>. По полосе раз в несколько секунд пробегает блик, надпись BLACK FRIDAY переливается.</span><i>Телефон: «BLACK FRIDAY −20 %» + кнопка</i></div>
   <div class="frame">
     <div class="bb b5"><span class="bfw">BLACK FRIDAY</span><span class="big">−20 %</span><span class="hide-m">на все виды работ в Сб / Вс</span><span class="mute hide-m">+ бонусы · до 31.12</span><a class="pill" href="#">Подробнее</a><span class="x">×</span></div>
     <div class="mhero"><img src="/evolution-service-minsk/img/hero6.webp" alt=""><div class="mh"><img src="/evolution-service-minsk/img/logo-ec-w.webp" alt=""><span>+375 29 135-88-88 <em>Меню</em></span></div><div class="mhero__t"><h3>Сервис китайских электромобилей и гибридов в Минске</h3><p>Диагностика, ТО, ремонт и русификация.</p></div></div>
