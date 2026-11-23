@@ -290,3 +290,17 @@ figure.w-stack > .w-photo { max-height: none; aspect-ratio: 4 / 3; }
 .w-stack > p.route-btns a { text-decoration: none; }
 .w-stack > p.route-btns a.btn--green { color: #fff; }
 .w-stack > p.route-btns a.btn--ghost { color: var(--ink2); border: 1px solid var(--line); background: #fff; }
+
+/* Документы (политика, соглашение): фон как у всего сайта, тёмный текст */
+.hero--plain:has(.legal) { background: var(--bg); color: var(--ink); }
+.hero--plain:has(.legal) .wrap { padding-top: 130px; padding-bottom: 60px; }
+.hero--plain:has(.legal) .w-crumbs, .hero--plain:has(.legal) .w-crumbs a { color: var(--muted); }
+.hero--plain:has(.legal) h1 { color: var(--ink); }
+.hero--plain:has(.legal) .legal { margin-top: 24px; padding: 36px 40px; border-radius: var(--r); background: #fff; color: var(--ink2); }
+@media (max-width: 767px) { .hero--plain:has(.legal) .legal { padding: 22px 18px; } .hero--plain:has(.legal) .wrap { padding-top: 100px; } }
+.hero--plain:has(.legal) p, .hero--plain:has(.legal) .legal h3 { color: var(--ink2); max-width: none; }
+.hero--plain:has(.legal) b { color: var(--ink); }
+.hero--plain:has(.legal) .hero__txt { max-width: 900px; padding-right: 0; opacity: 1 !important; transform: none !important; }
+.hero--plain:has(.legal) .legal { max-width: none; }
+/* меню на светлом фоне – сразу в «прокрученном» тёмном виде */
+body:has(.hero--plain .legal) .hdr__in { background: rgba(17,17,17,.9); border-color: rgba(255,255,255,.1); }
