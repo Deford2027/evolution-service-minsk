@@ -877,3 +877,9 @@ body.mg-lock { overflow: hidden; }
   .rev h3 { font-size: 18px; }
   .rev p { font-size: 15px; line-height: 1.5; }
 }
+
+/* Горизонтальные ленты на телефоне: листаются только вбок, без вертикального сдвига внутри блока и без «пружины» страницы */
+@media (max-width: 1080px) {
+  .lenta, .revs--slide, .mk-tabs, .mg-tabs, [data-mob=lenta] .w-grid { overflow-y: hidden; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
+  [data-mob=lenta] .w-grid { padding-bottom: 4px; }
+}

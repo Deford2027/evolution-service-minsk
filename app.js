@@ -259,8 +259,16 @@
       var sib = Array.prototype.indexOf.call(el.parentNode.children, el);
       if (/w-grid|w-steps|w-two|w-faq/.test(el.parentNode.className)) el.style.setProperty('--d', Math.min(sib, 6) * 70 + 'ms');
     });
-    var aio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); aio.unobserve(e.target); } }); }, { rootMargin: '0px 0px -6% 0px' });
-    an.forEach(function (el) { aio.observe(el); });
+    var aio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) {
+      if (e.target.hasAttribute('data-strip')) $$(':scope > .a-in', e.target).forEach(function (c) { c.classList.add('is-in'); });
+      else e.target.classList.add('is-in');
+      aio.unobserve(e.target); } }); }, { rootMargin: '0px 0px -6% 0px' });
+    // Горизонтальные ленты (телефон): карточки за краем экрана не выезжают во время свайпа – вся лента появляется разом
+    an.forEach(function (el) {
+      var p = el.parentNode;
+      if (/auto|scroll/.test(getComputedStyle(p).overflowX)) { if (!p.hasAttribute('data-strip')) { p.setAttribute('data-strip', ''); aio.observe(p); } }
+      else aio.observe(el);
+    });
   }
 
   var reduceFaq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
