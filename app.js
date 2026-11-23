@@ -1,6 +1,21 @@
 // Поведение главной: меню, маска телефона, согласие, отправка заявок в Telegram, ленты, таб-бар, окно «Связаться», фото в окне, появление блоков.
 (function () {
   var LEADS = 'https://ev-leads.168.113.179.49.nip.io/lead'; // приём заявок (/opt/ev-leads на сервере FirstVDS)
+  // Для админки заявок: откуда пришёл (первый заход вкладки), метки ссылки, путь по сайту (последние 15 страниц)
+  // и номер визита. Хранится только в этом браузере и уходит на сервер лишь вместе с заявкой.
+  var trail = {};
+  try {
+    var ss = window.sessionStorage, ls = window.localStorage;
+    trail = JSON.parse(ss.getItem('evm-trail') || 'null');
+    if (!trail) {
+      var ref = document.referrer && document.referrer.indexOf(location.host) < 0 ? document.referrer : '';
+      var utm = location.search.replace(/^\?/, '').split('&').filter(function (x) { return /^(utm_|yclid|gclid)/.test(x); }).join('&');
+      var v = (parseInt(ls.getItem('evm-visits'), 10) || 0) + 1; ls.setItem('evm-visits', v);
+      trail = { referrer: ref.slice(0, 400), utm: decodeURIComponent(utm).slice(0, 200), visits: v, journey: [] };
+    }
+    if (trail.journey[trail.journey.length - 1] !== location.pathname) trail.journey = trail.journey.concat(location.pathname).slice(-15);
+    ss.setItem('evm-trail', JSON.stringify(trail));
+  } catch (e) { trail = {}; }
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
@@ -184,7 +199,8 @@
       });
       var hp = $('input[name=website]', f), popH = f.closest('.pop') && $('#pop-h');
       var data = { form: (popH ? popH.textContent + ' (окно)' : btnText.trim()), name: nm ? nm.value.trim() : '', phone: tel.value,
-        fields: fields, title: document.title, url: location.href, website: hp ? hp.value : '' };
+        fields: fields, title: document.title, url: location.href, website: hp ? hp.value : '',
+        referrer: trail.referrer || '', utm: trail.utm || '', visits: trail.visits || 1, journey: (trail.journey || []).join('|') };
       var err = $('.send-err', f); if (err) err.remove();
       btn.disabled = true; btn.textContent = 'Отправляем…';
       fetch(LEADS, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
