@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Блог: список и 6 статей – отчёт</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #eceef1; --card: #ffffff; --ink: #16191c; --muted: #646a71; --line: #dfe2e6; --green: #1f4a45; --green-soft: #e3ecea;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #121517; --card: #1b1f22; --ink: #eef0f2; --muted: #9aa1a8; --line: #2b3034; --green: #6fb3a8; --green-soft: #1f2d2b; color-scheme: dark } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--font); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 32px 16px 48px; display: grid; gap: 14px; }
+.eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.eyebrow a { color: inherit; }
+h1 { margin: 0; font-weight: 500; font-size: clamp(28px, 6vw, 40px); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+.lead { margin: 0; color: var(--muted); max-width: 62ch; }
+.card { background: var(--card); border-radius: 16px; padding: 22px; display: grid; gap: 12px; min-width: 0; }
+.voice { background: var(--green); color: #fff; }
+.voice b { font-weight: 500; font-size: 18px; } .voice span { opacity: .8; font-size: 14px; }
+audio { width: 100%; }
+h2 { margin: 0; font-weight: 500; font-size: 20px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pair figure { margin: 0; display: grid; gap: 6px; min-width: 0; }
+.pair img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; display: block; }
+.pair figcaption { font-size: 13px; color: var(--muted); }
+.pair figure:last-child figcaption { color: var(--green); font-weight: 500; }
+ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+a { color: var(--green); }
+.note { border: 1px solid var(--line); background: transparent; }
+@media (max-width: 520px) { .pair { grid-template-columns: 1fr; } }
+.shot { width: 100%; border-radius: 12px; display: block; border: 1px solid var(--line); }
+table { width: 100%; border-collapse: collapse; font-size: 15px; } td, th { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); } th { color: var(--muted); font-weight: 500; } td:last-child { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow"><a href="../">Отчёты</a> · Evolution Car Service · 23 ноября 2026</p>
+  <h1>Блог: список статей и 6 статей под Минск</h1>
+  <p class="lead">Страница блога собрана заново: карточки статей с фильтром по темам и форма вопроса мастеру. Шесть статей взяты с блога Новосибирска и переписаны под Минск. Управление статьями в админку не добавлялось.</p>
+  <div class="card voice"><b>Голосовой отчёт</b><span>~1 мин</span><audio id="golos" controls preload="metadata" src="golos.mp3"></audio></div>
+  <div class="card"><h2>Статьи</h2><ul>
+    <li><a href="https://deford2027.github.io/evolution-service-minsk/blog/elektromobil-zimoy-v-minske/">Китайский электромобиль зимой в Минске: что проверить до морозов</a></li>
+    <li><a href="https://deford2027.github.io/evolution-service-minsk/blog/rusifikaciya-mashiny-iz-kitaya/">Как русифицировать машину из Китая: с чего начать</a></li>
+    <li><a href="https://deford2027.github.io/evolution-service-minsk/blog/diagnostika-kitayskogo-gibrida/">Диагностика китайского гибрида: что смотрим, чем и в каком порядке</a></li>
+    <li><a href="https://deford2027.github.io/evolution-service-minsk/blog/maslo-v-reduktore-elektromobilya/">Масло в редукторе электромобиля</a></li>
+    <li><a href="https://deford2027.github.io/evolution-service-minsk/blog/master-akkaunt-kitayskogo-avto/">Мастер-аккаунт китайского автомобиля</a></li>
+    <li><a href="https://deford2027.github.io/evolution-service-minsk/blog/prilozhenie-zeekr-v-belarusi/">Приложение Zeekr в Беларуси: почему не работает</a></li>
+  </ul></div>
+  <div class="card"><h2>Что переписано под Минск</h2><ul>
+    <li>Адрес, телефон и формы Минска. Новосибирский адрес и имя основателя убраны.</li>
+    <li>Цены Новосибирска убраны: как на всём сайте, «назовём до начала работ».</li>
+    <li>Зима: минская слякоть, оттепели и реагенты вместо сибирских морозов.</li>
+    <li>Приложения: Беларусь вместо России, SIM-карта белорусского оператора, перенос мастер-аккаунта и Pandora – это услуги, которые есть на сайте Минска.</li>
+    <li>Из каждой статьи ссылки на услуги по теме, 5 частых вопросов (2 колонки), «Читайте также», форма заявки.</li>
+  </ul></div>
+  <div class="card"><h2>Список статей</h2><img class="shot" src="b-list.webp" alt="Список статей" loading="lazy"></div>
+  <div class="card"><h2>Страница статьи</h2><img class="shot" src="b-art.webp" alt="Статья" loading="lazy"></div>
+  <div class="card"><h2>Как добавлять новые статьи</h2><p>Пока без админки: новую статью добавляю я по вашему тексту или теме. Достаточно прислать тему или готовый текст и, если есть, фото.</p></div>
+</div>
+</body></html>
