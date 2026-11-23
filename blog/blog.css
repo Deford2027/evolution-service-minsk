@@ -1,0 +1,84 @@
+/* Блог: список статей и страница статьи. Подключается только на страницах /blog/. */
+
+/* --- карточки статей --- */
+.bl-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 30px; margin-bottom: 14px; }
+.bl-head h2 { margin: 0 !important; }
+.bl-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.bl-tags button { padding: 10px 16px; border: 0; border-radius: 999px; background: #fff; color: var(--ink2); font-size: 14px; cursor: pointer; transition: background .2s, color .2s; }
+.bl-tags button:hover { background: #f6f7f9; }
+.bl-tags button.is-on { background: var(--green); color: #fff; }
+.bl-card { gap: 10px; }
+.bl-card[hidden] { display: none; }
+.bl-card__img { display: block; margin: -10px -10px 6px; }
+.bl-card .w-photo { cursor: pointer; max-height: none; aspect-ratio: 16 / 9; }
+.bl-card h2, .bl-card h3 { font: 500 21px/1.25 var(--font); letter-spacing: -.3px; color: var(--ink); max-width: none; margin: 0; }
+.bl-card h2 a, .bl-card h3 a { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.bl-card h2 a::after { content: ''; flex: 0 0 36px; height: 36px; border-radius: 5px; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 17L17 7M17 17V7H7' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat; transition: transform .2s, background-color .2s; }
+.bl-card h2 a:hover::after { background-color: var(--green2); transform: translate(1px,-1px); }
+.bl-card > p:last-child { font-size: 14px; color: var(--muted); }
+
+.bl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 13px; color: var(--muted); }
+.bl-tag { display: inline-block; padding: 4px 10px; border-radius: 999px; background: rgba(11,68,66,.08); color: var(--green); font-size: 12px; font-weight: 500; }
+.hero--in .bl-meta--hero { color: rgba(255,255,255,.7); font-size: 14px; }
+.hero--in .bl-meta--hero .bl-tag { background: rgba(255,255,255,.14); color: #fff; }
+.bl-hero h1 { max-width: 760px; }
+
+/* --- статья --- */
+.bl-post { padding-top: 60px; }
+.bl-post__in { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 15px; align-items: start; }
+.bl-toc { position: sticky; top: 100px; display: grid; gap: 14px; padding: 24px; border-radius: var(--r); background: #fff; }
+.bl-toc__h { font: 500 13px/1.3 var(--font); letter-spacing: .06em; text-transform: uppercase; color: var(--green); }
+.bl-toc ol { margin: 0; padding: 0 0 0 18px; display: grid; gap: 8px; font-size: 14px; line-height: 1.4; color: var(--ink2); }
+main .bl-toc li a { color: inherit; text-decoration: none; }
+.bl-toc ol a:hover { color: var(--green); text-decoration: underline; text-underline-offset: 2px; }
+.bl-ask { display: grid; gap: 8px; padding-top: 16px; border-top: 1px solid var(--line); }
+.bl-ask b { font-weight: 500; font-size: 15px; margin-bottom: 4px; }
+.bl-ask .btn { width: 100%; justify-content: center; }
+
+.bl-body { max-width: 860px; padding: 44px 52px 48px; border-radius: var(--r); background: #fff; color: var(--ink2); font-size: 17px; line-height: 1.65; }
+.bl-body > * + * { margin-top: 16px; }
+.bl-body .bl-lead { font-size: 19px; line-height: 1.55; color: var(--ink); }
+main .bl-body h2 { margin-top: 40px; font: 500 28px/1.2 var(--font); letter-spacing: -.5px; color: var(--ink); scroll-margin-top: 100px; }
+.bl-body ul, .bl-body ol { margin-bottom: 0; padding-left: 0; list-style: none; display: grid; gap: 10px; }
+.bl-body ul li { position: relative; padding-left: 22px; }
+.bl-body ul li::before { content: ''; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border-radius: 2px; background: var(--green); }
+.bl-body b { font-weight: 600; color: var(--ink); }
+.bl-body a { color: var(--green); text-decoration: underline; text-underline-offset: 2px; }
+.bl-note { padding: 18px 22px; border-left: 3px solid var(--green); border-radius: 0 10px 10px 0; background: rgba(11,68,66,.06); color: var(--ink); }
+.bl-table { overflow-x: auto; }
+.bl-table table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.bl-table th, .bl-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; }
+.bl-table th { font-weight: 500; color: var(--muted); font-size: 13px; }
+.bl-table td:not(:first-child), .bl-table th:not(:first-child) { white-space: nowrap; }
+
+.bl-cta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px 40px; padding: 44px 48px; border-radius: var(--r); background: var(--green); color: #fff; }
+.bl-cta > div:first-child { flex: 1 1 420px; display: grid; gap: 12px; }
+main .bl-cta h2 { color: #fff; font-size: 36px; letter-spacing: -1px; }
+.bl-cta p { color: rgba(255,255,255,.75); max-width: 620px; }
+
+.bl-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
+.bl-link { display: grid; gap: 6px; padding: 22px 60px 22px 24px; border-radius: var(--r); background: #fff; position: relative; transition: transform .3s, box-shadow .3s; }
+.bl-link::after { content: ''; position: absolute; right: 20px; top: 50%; width: 30px; height: 30px; margin-top: -15px; border-radius: 5px; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 17L17 7M17 17V7H7' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; }
+.bl-link b { font-weight: 500; font-size: 17px; color: var(--ink); }
+.bl-link span { font-size: 14px; color: var(--muted); }
+@media (hover: hover) { .bl-link:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(20,30,40,.08); } }
+
+@media (max-width: 1100px) {
+  .bl-post__in { grid-template-columns: 1fr; }
+  .bl-toc { position: static; }
+  .bl-ask { display: none; }
+  .bl-body { max-width: none; }
+}
+@media (max-width: 900px) { .bl-links { grid-template-columns: 1fr; } }
+@media (max-width: 767px) {
+  .hero__in > .bl-meta--hero { order: 2; }
+  .bl-post { padding-top: 40px; }
+  .bl-body { padding: 26px 20px 30px; font-size: 16px; }
+  .bl-body .bl-lead { font-size: 17px; }
+  main .bl-body h2 { margin-top: 30px; font-size: 23px; }
+  .bl-cta { padding: 28px 22px; }
+  main .bl-cta h2 { font-size: 27px; }
+  .bl-cta .w-actions, .bl-cta .btn { width: 100%; }
+  .bl-tags { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; padding-bottom: 4px; }
+  .bl-tags button { flex: 0 0 auto; }
+}
