@@ -1,5 +1,6 @@
-// Поведение главной: меню, маска телефона, согласие, отправка, ленты, таб-бар, окно «Связаться», фото в окне, появление блоков.
+// Поведение главной: меню, маска телефона, согласие, отправка заявок в Telegram, ленты, таб-бар, окно «Связаться», фото в окне, появление блоков.
 (function () {
+  var LEADS = 'https://ev-leads.168.113.179.49.nip.io/lead'; // приём заявок (/opt/ev-leads на сервере FirstVDS)
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
@@ -172,9 +173,34 @@
     });
     tel.addEventListener('blur', function () { if (tel.value === '+375 (' || tel.value === '+375') tel.value = ''; });
     agree.addEventListener('change', check);
-    // Дизайн-макет: заявка никуда не уходит, показываем экран «Заявка принята»
-    f.addEventListener('submit', function (e) { e.preventDefault(); if (btn.disabled) return; f.classList.add('sent');
-      var ok = $('.ok', f); if (ok) { ok.tabIndex = -1; ok.focus({ preventScroll: true }); ok.scrollIntoView({ block: 'center' }); } });
+    // Заявка → посредник на сервере → Telegram-бот @ev_service_leads_bot (токен только на сервере)
+    var btnText = btn.textContent;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault(); if (btn.disabled) return;
+      var nm = $('input[name=name]', f), fields = {};
+      $$('input:not([type=checkbox]):not([type=hidden]), select, textarea', f).forEach(function (el) {
+        if (el === tel || el === nm || el.name === 'website' || !el.value.trim()) return;
+        var l = el.closest('label'); fields[el.getAttribute('aria-label') || el.placeholder || (l && l.textContent.trim()) || el.name] = el.value.trim();
+      });
+      var hp = $('input[name=website]', f), popH = f.closest('.pop') && $('#pop-h');
+      var data = { form: (popH ? popH.textContent + ' (окно)' : btnText.trim()), name: nm ? nm.value.trim() : '', phone: tel.value,
+        fields: fields, title: document.title, url: location.href, website: hp ? hp.value : '' };
+      var err = $('.send-err', f); if (err) err.remove();
+      btn.disabled = true; btn.textContent = 'Отправляем…';
+      fetch(LEADS, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); })
+        .then(function () {
+          btn.textContent = btnText; f.classList.add('sent');
+          var ok = $('.ok', f); if (ok) { ok.tabIndex = -1; ok.focus({ preventScroll: true }); ok.scrollIntoView({ block: 'center' }); }
+        })
+        .catch(function () {
+          btn.textContent = btnText; check();
+          err = document.createElement('p'); err.className = 'send-err'; err.setAttribute('role', 'alert');
+          err.style.cssText = 'margin:8px 0 0;color:#e5484d;font-size:14px';
+          err.innerHTML = 'Не получилось отправить заявку. Попробуйте ещё раз или позвоните: <a href="tel:+375291358888" style="color:inherit">+375 29 135-88-88</a>';
+          btn.insertAdjacentElement('afterend', err);
+        });
+    });
   });
 
   // Слайдер отзывов: стрелки листают на одну карточку
