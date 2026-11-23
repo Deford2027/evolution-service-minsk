@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Black Friday: где разместить акцию – варианты</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/evolution-service-minsk/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/evolution-service-minsk/style.css?v=2239b80b">
+<style>
+:root { --bf: #ff5a1f; --bf2: #ff7a45; --bk: #0b0d10; --bk2: #15181c; }
+body { padding-bottom: 100px; }
+.vnav { position: sticky; top: 0; z-index: 20; background: rgba(236,238,242,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.vnav .wrap { display: flex; gap: 6px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: none; }
+.vnav a { flex: 0 0 auto; padding: 8px 14px; border-radius: 20px; background: #fff; font-size: 13px; color: var(--ink2); }
+.vnav a.rec { background: var(--bk); color: #fff; }
+.vintro { padding-top: 40px; display: grid; gap: 14px; }
+.vintro h1 { font: 500 38px/1.12 var(--font); letter-spacing: -1px; margin: 0; }
+.vintro p { color: var(--muted); max-width: 760px; margin: 0; }
+.vrec { display: grid; gap: 8px; padding: 22px 24px; border-radius: 14px; background: var(--bk); color: #fff; max-width: 900px; }
+.vrec b { font-weight: 600; }
+.vrec ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; color: rgba(255,255,255,.8); }
+.vrec .o { color: var(--bf2); }
+.vsec { padding-top: 80px; scroll-margin-top: 60px; }
+.vlabel { display: grid; gap: 6px; margin-bottom: 20px; padding: 16px 20px; border-radius: 12px; background: #dfe3e8; }
+.vlabel b { font-size: 20px; font-weight: 600; }
+.vlabel b small { display: inline-block; margin-left: 8px; padding: 3px 10px; border-radius: 999px; background: var(--bk); color: #fff; font-size: 12px; font-weight: 500; vertical-align: middle; }
+.vlabel span { color: var(--ink2); font-size: 15px; max-width: 900px; }
+.vlabel i { font-style: normal; color: var(--muted); font-size: 14px; }
+.frame { position: relative; border-radius: 16px; overflow: hidden; background: #111; box-shadow: 0 20px 50px rgba(20,30,40,.12); }
+
+/* общий кусок «шапки» в макетах */
+.mh { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 16px; padding: 12px 16px; border-radius: 12px; background: rgba(17,17,17,.75); border: 1px solid rgba(255,255,255,.1); }
+.mh img { height: 18px; width: auto; }
+.mh span { display: flex; gap: 8px; align-items: center; color: #fff; font-size: 13px; }
+.mh span em { font-style: normal; padding: 7px 12px; border-radius: 6px; background: #fff; color: #111; }
+.mhero { position: relative; min-height: 380px; color: #fff; }
+.mhero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.mhero__t { position: relative; padding: 40px 32px 40px; max-width: 640px; display: grid; gap: 14px; }
+.mhero__t h3 { font: 500 38px/1.08 var(--font); letter-spacing: -1px; margin: 0; }
+.mhero__t p { margin: 0; color: rgba(255,255,255,.75); }
+.mbtns { display: flex; flex-wrap: wrap; gap: 10px; }
+.mbtns a { padding: 14px 20px; border-radius: 8px; background: var(--green); color: #fff; font-size: 14px; font-weight: 500; }
+.mbtns a + a { background: rgba(255,255,255,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+
+/* 1 полоса над шапкой */
+.bf-bar { display: flex; align-items: center; justify-content: center; gap: 10px 18px; flex-wrap: wrap; padding: 11px 16px; background: var(--bk); color: #fff; font-size: 14px; text-align: center; border-bottom: 1px solid rgba(255,255,255,.08); }
+.bf-bar b { font-weight: 700; letter-spacing: .02em; }
+.bf-bar .o { color: var(--bf); font-weight: 700; }
+.bf-bar a { padding: 6px 14px; border-radius: 999px; background: var(--bf); color: #fff; font-weight: 500; font-size: 13px; }
+.bf-bar s { text-decoration: none; color: rgba(255,255,255,.55); }
+
+/* 2 бейдж в первом экране */
+.bf-chip { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 7px 8px 7px 14px; border-radius: 999px; background: rgba(11,13,16,.85); border: 1px solid rgba(255,90,31,.5); font-size: 14px; }
+.bf-chip b { color: var(--bf); font-weight: 700; }
+.bf-chip a { padding: 5px 12px; border-radius: 999px; background: var(--bf); color: #fff; font-size: 13px; }
+.bf-note { font-size: 13px; color: rgba(255,255,255,.6); }
+.bf-note b { color: var(--bf2); font-weight: 500; }
+
+/* 3 большой баннер */
+.bf-big { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 30px; padding: 44px; border-radius: 16px; background: var(--bk); color: #fff; overflow: hidden; }
+.bf-big::before { content: ''; position: absolute; inset: 0; background: url(/evolution-service-minsk/img/hero-zeekr.webp) right center / cover no-repeat; opacity: .45; }
+.bf-big::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--bk) 30%, rgba(11,13,16,.4) 70%, rgba(11,13,16,.1)); }
+.bf-big > * { position: relative; z-index: 1; }
+.bf-big__l { display: grid; gap: 14px; align-content: start; }
+.bf-kick { font-size: 14px; color: rgba(255,255,255,.6); }
+.bf-big h3 { margin: 0; font: 700 52px/1 var(--font); letter-spacing: -1.6px; }
+.bf-big h3 span { color: #8a8d91; }
+.bf-pct { display: flex; align-items: center; gap: 18px; }
+.bf-pct b { font: 700 96px/.9 var(--font); letter-spacing: -4px; color: var(--bf); }
+.bf-pct span { font: 600 20px/1.2 var(--font); }
+.bf-big__l p { margin: 0; color: rgba(255,255,255,.7); }
+.bf-cta { justify-self: start; padding: 18px 26px; border-radius: 10px; background: var(--bf); color: #fff; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; font-size: 14px; }
+.bf-cta:hover { background: var(--bf2); }
+.bf-big__r { display: grid; gap: 10px; align-content: end; }
+.bf-big__r > p { margin: 0; color: var(--bf); font-size: 14px; }
+.bf-bon { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.bf-bon div { display: grid; gap: 6px; align-content: start; padding: 18px; border-radius: 12px; background: rgba(21,24,28,.85); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(6px); }
+.bf-bon i { font-style: normal; color: var(--bf); font-weight: 700; font-size: 20px; }
+.bf-bon b { font-weight: 600; font-size: 16px; line-height: 1.2; }
+.bf-bon b em { font-style: normal; color: var(--bf); }
+.bf-bon span { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.4; }
+
+/* 4 меню */
+.mmenu { display: grid; grid-template-columns: 1fr 1fr 300px; gap: 14px; padding: 18px; background: #fff; }
+.mmenu__col { display: grid; gap: 8px; align-content: start; }
+.mmenu__col span { padding: 12px 14px; border-radius: 10px; background: var(--bg); font-size: 14px; color: var(--ink2); }
+.bf-mcta { display: grid; gap: 10px; align-content: start; padding: 22px; border-radius: 14px; background: var(--bk); color: #fff; }
+.bf-mcta small { color: rgba(255,255,255,.55); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+.bf-mcta b { font: 700 30px/1.05 var(--font); letter-spacing: -.8px; }
+.bf-mcta b span { color: var(--bf); }
+.bf-mcta ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 13px; color: rgba(255,255,255,.75); }
+.bf-mcta li::before { content: '+ '; color: var(--bf); font-weight: 700; }
+.bf-mcta a { text-align: center; padding: 12px; border-radius: 8px; background: var(--bf); color: #fff; font-weight: 500; font-size: 14px; }
+
+/* 5 попап */
+.mpop { position: relative; min-height: 520px; display: grid; place-items: center; padding: 30px 16px; }
+.mpop > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .25; filter: blur(3px); }
+.bf-pop { position: relative; width: min(460px, 100%); display: grid; gap: 14px; padding: 30px; border-radius: 18px; background: var(--bk); color: #fff; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+.bf-pop__x { position: absolute; top: 14px; right: 16px; color: rgba(255,255,255,.5); font-size: 22px; }
+.bf-pop .bf-pct b { font-size: 72px; }
+.bf-pop .bf-pct span { font-size: 16px; }
+.bf-pop input { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,.15); background: var(--bk2); color: #fff; }
+.bf-pop .bf-cta { justify-self: stretch; text-align: center; }
+.bf-pop p { margin: 0; font-size: 13px; color: rgba(255,255,255,.55); }
+
+/* 6 ярлык */
+.mfab { position: relative; min-height: 340px; background: var(--bg); }
+.mfab__page { padding: 30px; display: grid; gap: 12px; }
+.mfab__page i { display: block; height: 14px; border-radius: 6px; background: #dfe3e8; }
+.mfab__page i:nth-child(1) { width: 40%; height: 26px; }
+.mfab__page i:nth-child(3) { width: 85%; } .mfab__page i:nth-child(4) { width: 70%; }
+.bf-fab { position: absolute; right: 24px; bottom: 24px; display: flex; align-items: center; gap: 12px; padding: 10px 18px 10px 10px; border-radius: 999px; background: var(--bk); color: #fff; box-shadow: 0 14px 34px rgba(0,0,0,.25); font-size: 14px; }
+.bf-fab b { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--bf); font-size: 15px; font-weight: 700; }
+.bf-fab span small { display: block; color: rgba(255,255,255,.6); font-size: 12px; }
+
+/* 7 страница услуги */
+.msvc .mhero__t { padding-top: 28px; }
+.mtab { border-collapse: collapse; font-size: 14px; }
+.mtab th, .mtab td { padding: 8px 18px 8px 0; text-align: left; border-bottom: 1px solid rgba(255,255,255,.12); }
+.mtab th { color: rgba(255,255,255,.55); font-weight: 400; }
+.mtab tr.bf td { color: var(--bf2); font-weight: 500; }
+
+/* 8 отдельная страница */
+.mpage { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; padding: 22px; background: var(--bg); }
+.mpage__l { display: grid; gap: 12px; padding: 26px; border-radius: 14px; background: #fff; align-content: start; }
+.mpage__l h4 { margin: 0; font: 600 22px/1.2 var(--font); }
+.mpage__l ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--ink2); font-size: 15px; }
+.mpage__l p { margin: 0; color: var(--muted); font-size: 14px; }
+.mpage__r { display: grid; gap: 10px; padding: 26px; border-radius: 14px; background: #fff; align-content: start; }
+.mpage__r i { display: block; height: 46px; border-radius: 10px; border: 1px solid var(--line); }
+.mpage__r a { text-align: center; padding: 16px; border-radius: 10px; background: var(--bf); color: #fff; font-weight: 600; }
+
+.vbadge { display: inline-block; padding: 2px 8px; border-radius: 6px; background: #fff; font-size: 13px; color: var(--ink2); }
+
+@media (max-width: 900px) {
+  .bf-big { grid-template-columns: 1fr; padding: 28px 22px; }
+  .bf-big h3 { font-size: 36px; }
+  .bf-pct { flex-wrap: wrap; gap: 8px 14px; }
+  .bf-pct b { font-size: 72px; }
+  .bf-pct span br { display: none; }
+  .bf-chip { font-size: 13px; }
+  .bf-bon { grid-template-columns: 1fr; }
+  .mmenu { grid-template-columns: 1fr; }
+  .mmenu__col:nth-child(2) { display: none; }
+  .mpage { grid-template-columns: 1fr; }
+  .vintro h1 { font-size: 28px; }
+  .mhero__t { padding: 24px 18px; }
+  .mhero__t h3 { font-size: 28px; }
+  .mh span { display: none; }
+  .bf-bar { font-size: 13px; }
+  .bf-bar s { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="vnav"><div class="wrap">
+  <a href="#v1" class="rec">1 · Полоса над шапкой</a><a href="#v2">2 · Бейдж в первом экране</a><a href="#v3" class="rec">3 · Баннер на главной</a><a href="#v4" class="rec">4 · Карточка в меню</a><a href="#v5">5 · Всплывающее окно</a><a href="#v6">6 · Ярлык в углу</a><a href="#v7">7 · Строка на страницах услуг</a><a href="#v8" class="rec">8 · Страница акции</a>
+</div></nav>
+
+<div class="wrap">
+<div class="vintro">
+  <h1>Black Friday на сайте: где разместить акцию</h1>
+  <p>На старом сайте акция сейчас стоит цветной полосой над шапкой: «Осенняя акция, скидка 10 % на ремонт и ТО, 01.10–01.12». На новом сайте осенняя акция стоит в трёх местах: в меню (на всех страницах), плашкой на главной и в вопросах на главной. Ниже 8 мест для Black Friday – их можно сочетать. Тексты сокращены из полного текста акции, цвета – как на баннере: чёрный и оранжевый.</p>
+  <div class="vrec">
+    <b>Моя рекомендация – связка из четырёх (тёмные кнопки в навигации):</b>
+    <ol>
+      <li><b>Полоса над шапкой</b> на всех страницах – как сейчас на старом сайте, человек видит акцию с любой страницы.</li>
+      <li><b>Большой баннер на главной</b> вместо плашки осенней акции – вся акция как на вашем баннере.</li>
+      <li><b>Карточка в меню</b> вместо «Скидка 10 %» – уже стоит на 279 страницах.</li>
+      <li><b>Страница акции</b> с полными условиями и формой – на неё ведут все кнопки, заявки в админке помечены «Black Friday».</li>
+    </ol>
+    <span class="o">Вопрос: осенняя акция −10 % идёт до 1 декабря, Black Friday – с 20.11. Убираем осеннюю сразу или оставляем до 1.12?</span>
+  </div>
+</div>
+
+<!-- 1 -->
+<section class="vsec" id="v1">
+  <div class="vlabel"><b>1 · Полоса над шапкой <small>рекомендую</small></b><span>Узкая чёрная полоса над меню на всех страницах, как сейчас на старом сайте. Кнопка ведёт на страницу акции. Посетитель может закрыть её крестиком, тогда до конца визита она не показывается.</span><i>Где: все страницы сайта · На телефоне: одна строка «Black Friday −20 % в Сб/Вс» + кнопка</i></div>
+  <div class="frame">
+    <div class="bf-bar"><b>BLACK FRIDAY</b><span><span class="o">−20 %</span> на все виды работ при записи на Сб / Вс</span><s>· до 31 декабря</s><a href="#v8">Подробнее</a></div>
+    <div class="mhero"><img src="/evolution-service-minsk/img/hero6.webp" alt="">
+      <div class="mh"><img src="/evolution-service-minsk/img/logo-ec-w.webp" alt="Evolution Car"><span>+375 29 135-88-88 <em>Меню</em></span></div>
+      <div class="mhero__t"><h3>Сервис китайских электромобилей и гибридов в Минске</h3><p>Диагностика, ТО, ремонт и русификация.</p><div class="mbtns"><a>Позвонить мастеру</a><a>Записаться</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="vsec" id="v2">
+  <div class="vlabel"><b>2 · Бейдж в первом экране главной</b><span>Небольшая оранжевая метка над заголовком главной и строка под кнопками. Не мешает основному тексту, но первое, что видит человек.</span><i>Где: главная (можно и на страницах услуг) · Хорошо сочетается с вариантом 3</i></div>
+  <div class="frame">
+    <div class="mhero"><img src="/evolution-service-minsk/img/hero6.webp" alt="">
+      <div class="mh"><img src="/evolution-service-minsk/img/logo-ec-w.webp" alt="Evolution Car"><span>+375 29 135-88-88 <em>Меню</em></span></div>
+      <div class="mhero__t"><span class="bf-chip"><span>Black&nbsp;Friday · <b>−20&nbsp;%</b> в&nbsp;Сб&nbsp;/&nbsp;Вс</span><a href="#v8">Условия</a></span><h3>Сервис китайских электромобилей и гибридов в Минске</h3><p>Диагностика, ТО, ремонт и русификация.</p><div class="mbtns"><a>Позвонить мастеру</a><a>Записаться на выходной</a></div><p class="bf-note"><b>До 31.12:</b> −20 % на все работы при записи на субботу или воскресенье + бесплатная диагностика подвески</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="vsec" id="v3">
+  <div class="vlabel"><b>3 · Большой баннер на главной <small>рекомендую</small></b><span>Вся акция как на вашем баннере: −20 %, три бесплатных бонуса и кнопка записи. Встаёт на место плашки осенней акции (после блока «Марки и модели»). Фото – Zeekr с сайта.</span><i>Где: главная, при желании – страницы ТО, диагностики, ремонта · На телефоне бонусы идут столбиком</i></div>
+  <div class="bf-big">
+    <div class="bf-big__l">
+      <span class="bf-kick">[ Black Friday · 20.11 – 31.12 ]</span>
+      <h3>Black Friday<br><span>в Evolution Car</span></h3>
+      <div class="bf-pct"><b>−20%</b><span>на все виды работ<br>при записи на Сб / Вс</span></div>
+      <p>Компьютерная диагностика, ТО, текущий ремонт, запчасти и другое.</p>
+      <a class="bf-cta" href="#v8">Записаться на выходной день</a>
+    </div>
+    <div class="bf-big__r">
+      <p>[ Бесплатный бонус ]</p>
+      <div class="bf-bon">
+        <div><i>01</i><b>Диагностика подвески</b><span>и проверка технических жидкостей – бесплатно</span></div>
+        <div><i>02</i><b>−5 % навсегда</b><span>на дальнейшее обслуживание</span></div>
+        <div><i>03</i><b>Сертификат <em>FOREVO</em></b><span>на зарядку – первым 50 владельцам электромобилей</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="vsec" id="v4">
+  <div class="vlabel"><b>4 · Карточка в меню <small>рекомендую</small></b><span>Сейчас в правой колонке меню – «Скидка 10 % на ремонт и ТО». Меняем на Black Friday. Меню открывают на любой странице, поэтому акция видна везде без лишних блоков.</span><i>Где: меню на 279 страницах · Сейчас там осенняя акция</i></div>
+  <div class="frame">
+    <div class="mmenu">
+      <div class="mmenu__col"><span>Техническое обслуживание (ТО)</span><span>Замена масла</span><span>Тормоза</span><span>Диагностика</span><span>Ремонт</span></div>
+      <div class="mmenu__col"><span>Geely</span><span>Zeekr</span><span>Lixiang</span><span>Voyah</span><span>BYD</span></div>
+      <div class="bf-mcta"><small>Black Friday · до 31.12</small><b><span>−20 %</span> на все работы в Сб / Вс</b><ul><li>Диагностика подвески бесплатно</li><li>−5 % навсегда</li><li>Сертификат FOREVO первым 50</li></ul><a href="#v8">Записаться на выходной</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="vsec" id="v5">
+  <div class="vlabel"><b>5 · Всплывающее окно</b><span>Появляется один раз за визит – через 15 секунд на сайте или когда человек тянется закрыть вкладку. Сразу с формой: имя и телефон, заявка приходит в админку с пометкой «Black Friday».</span><i>Где: все страницы · Минус: часть людей раздражают всплывающие окна, особенно на телефоне – там лучше показывать позже или не показывать</i></div>
+  <div class="frame mpop"><img src="/evolution-service-minsk/img/hero6.webp" alt="">
+    <div class="bf-pop"><span class="bf-pop__x">×</span>
+      <span class="bf-kick">[ Black Friday · до 31.12 ]</span>
+      <div class="bf-pct"><b>−20%</b><span>на все виды работ<br>при записи на Сб / Вс</span></div>
+      <p>+ бесплатная диагностика подвески и проверка жидкостей, −5 % навсегда на обслуживание</p>
+      <input placeholder="Имя" disabled><input placeholder="+375 (__) ___-__-__" disabled>
+      <a class="bf-cta" href="#v8">Записаться на выходной день</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="vsec" id="v6">
+  <div class="vlabel"><b>6 · Ярлык в углу экрана</b><span>Небольшая кнопка «−20 %» в правом нижнем углу, едет вместе со страницей. По нажатию открывает окно с условиями (как в варианте 5). На телефоне встаёт над нижним меню.</span><i>Где: все страницы · Ненавязчиво, но легко не заметить</i></div>
+  <div class="frame mfab">
+    <div class="mfab__page"><i></i><i></i><i></i><i></i><i></i></div>
+    <a class="bf-fab" href="#v5"><b>−20%</b><span>Black Friday<small>в Сб / Вс до 31.12</small></span></a>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="vsec" id="v7">
+  <div class="vlabel"><b>7 · Строка на страницах услуг</b><span>В первом экране страниц услуг (ТО, диагностика, ремонт…) в таблицу «Цена / Время / Гарантия» добавляется строка «Black Friday». Человек видит скидку прямо там, где думает о цене.</span><i>Где: 16 услуг + 176 страниц «услуга + марка» · Автоматически, одной правкой</i></div>
+  <div class="frame msvc">
+    <div class="mhero"><img src="/evolution-service-minsk/img/hero/diagnostika.webp" alt="">
+      <div class="mh"><img src="/evolution-service-minsk/img/logo-ec-w.webp" alt="Evolution Car"><span>+375 29 135-88-88 <em>Меню</em></span></div>
+      <div class="mhero__t"><h3>Диагностика в Минске</h3><p>Видим все блоки и батарею. Говорим, что чинить сейчас, а что подождёт.</p>
+        <table class="mtab"><tr><th>Цена</th><td>назовём до начала работ</td></tr><tr class="bf"><th>Black Friday</th><td>−20 % при записи на Сб / Вс, до 31.12</td></tr><tr><th>Гарантия</th><td>на работы и прошивки</td></tr></table>
+        <div class="mbtns"><a>Позвонить мастеру</a><a>Записаться на выходной</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="vsec" id="v8">
+  <div class="vlabel"><b>8 · Отдельная страница акции <small>рекомендую</small></b><span>Адрес /akcii/black-friday/. Сверху баннер из варианта 3, ниже полные условия, вопросы («Можно ли записаться на будний день?», «Суммируется ли с другими скидками?») и форма записи. На эту страницу ведут полоса, меню, ярлык и баннер. Её же удобно давать в рекламу и соцсети.</span><i>Где: отдельная страница + ссылка из меню «Компания» · Заявки помечены «Black Friday»</i></div>
+  <div class="frame mpage">
+    <div class="mpage__l"><h4>Условия акции</h4><ul><li>Действует с 20.11 по 31.12 при записи на субботу или воскресенье</li><li>−20 % на все виды работ: компьютерная диагностика, ТО, текущий ремонт, запчасти и другое</li><li>Бесплатно: диагностика подвески и проверка технических жидкостей</li><li>−5 % навсегда на дальнейшее обслуживание</li><li>Первым 50 владельцам электромобилей – сертификат на зарядку FOREVO</li></ul><p>Цену называем до начала работ. Пр-т Машерова,&nbsp;15/4, Минск</p></div>
+    <div class="mpage__r"><h4 style="margin:0;font:600 20px/1.2 var(--font)">Записаться на выходной</h4><i></i><i></i><a>Записаться со скидкой 20 %</a></div>
+  </div>
+</section>
+</div>
+</body>
+</html>
