@@ -12,36 +12,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/evolution-service-minsk/img/hero/uslugi.webp">
 <link rel="stylesheet" href="/evolution-service-minsk/style.css?v=2239b80b">
-<style>
-/* Black Friday: чёрная полоса с блеском (превью) */
-.bf-top { position: fixed; z-index: 61; top: 0; left: 0; right: 0; height: 44px; display: flex; align-items: center; justify-content: center; gap: 18px; padding: 0 52px 0 16px; background: #0c0f10; border-bottom: 1px solid rgba(255,255,255,.12); color: #fff; font-size: 14px; white-space: nowrap; overflow: hidden; }
-.bf-top::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 30%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.13), transparent); animation: bf-shine 5s ease-in-out infinite; pointer-events: none; }
-@keyframes bf-shine { 0% { transform: translateX(-120%) skewX(-20deg); } 60%, 100% { transform: translateX(380%) skewX(-20deg); } }
-@keyframes bf-flow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-.bf-top__w { font-weight: 800; letter-spacing: .16em; font-size: 13px; background: linear-gradient(90deg, #fff 20%, #8d939a 50%, #fff 80%); background-size: 200% 100%; animation: bf-flow 4s linear infinite; -webkit-background-clip: text; background-clip: text; color: transparent; }
-.bf-top__p { font-weight: 700; font-size: 18px; letter-spacing: -.3px; }
-.bf-top__m { color: rgba(255,255,255,.55); }
-.bf-top__b { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px; background: #fff; color: var(--green); font-weight: 500; font-size: 13px; transition: transform .2s, box-shadow .2s; }
-.bf-top__b::after { content: '›'; font-size: 16px; line-height: 1; }
-.bf-top__b:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.35); }
-.bf-top__x { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border: 0; border-radius: 50%; background: none; color: rgba(255,255,255,.55); font-size: 18px; line-height: 1; cursor: pointer; }
+<style id="bf-css">
+/* Black Friday: бегущая строка, чёрный фон с фирменным зелёным переливом */
+.bf-top { position: fixed; z-index: 61; top: 0; left: 0; right: 0; height: 46px; display: flex; align-items: center; color: #fff; font-size: 15px; white-space: nowrap; overflow: hidden;
+  background: linear-gradient(110deg, #0c0f10 0%, #0c0f10 28%, #0b4442 42%, #136a66 50%, #0b4442 58%, #0c0f10 72%, #0c0f10 100%); background-size: 250% 100%; animation: bf-flow 9s linear infinite; border-bottom: 1px solid rgba(255,255,255,.08); }
+@keyframes bf-flow { 0% { background-position: 100% 50%; } 100% { background-position: -150% 50%; } }
+.bf-top__l { flex: 0 0 auto; align-self: stretch; display: flex; align-items: center; gap: 9px; padding: 0 20px; background: #060708; font-weight: 700; letter-spacing: .06em; font-size: 14px; }
+.bf-top__l i { width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: bf-blink 1.4s ease-in-out infinite; }
+@keyframes bf-blink { 50% { opacity: .25; } }
+.bf-top__run { flex: 1; min-width: 0; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); }
+.bf-top__trk { display: flex; width: max-content; animation: bf-run 40s linear infinite; }
+.bf-top:hover .bf-top__trk { animation-play-state: paused; }
+@keyframes bf-run { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.bf-top__trk span { display: inline-flex; align-items: center; gap: 18px; padding-right: 18px; }
+.bf-top__trk span::after { content: '◆'; font-size: 8px; color: rgba(255,255,255,.4); }
+.bf-top__trk b { font-weight: 600; }
+.bf-top__b { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; margin: 0 8px 0 14px; padding: 8px 18px; border-radius: 999px; background: var(--green); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); color: #fff; font-weight: 500; font-size: 14px; transition: background .2s, transform .2s; }
+.bf-top__b::after { content: '›'; font-size: 17px; line-height: 1; }
+.bf-top__b:hover { background: var(--green2); transform: translateY(-1px); }
+.bf-top__x { flex: 0 0 auto; width: 30px; height: 30px; margin-right: 10px; border: 0; border-radius: 50%; background: none; color: rgba(255,255,255,.6); font-size: 18px; line-height: 1; cursor: pointer; }
 .bf-top__x:hover { background: rgba(255,255,255,.12); color: #fff; }
-body.bf-on .hdr { top: 64px; }
-body.bf-on .mg { top: 144px; }
-body.bf-on .hdr.hide { transform: translateY(calc(-100% - 74px)); }
+body.bf-on .hdr { top: 66px; }
+body.bf-on .hdr.hide { transform: translateY(calc(-100% - 76px)); }
+body.bf-on .mg { top: 146px; }
 @media (max-width: 767px) {
-  .bf-top { height: 40px; gap: 10px; padding: 0 40px 0 12px; font-size: 13px; }
-  .bf-top__t, .bf-top__m { display: none; }
-  .bf-top__p { font-size: 16px; }
-  .bf-top__b { padding: 5px 11px; font-size: 12px; }
+  .bf-top { height: 40px; font-size: 13px; }
+  .bf-top__l { padding: 0 12px; font-size: 12px; gap: 7px; }
+  .bf-top__b { display: none; }
+  .bf-top__x { margin-left: 4px; margin-right: 6px; }
   body.bf-on .hdr { top: 48px; }
   body.bf-on .mg { top: 116px; }
 }
-@media (prefers-reduced-motion: reduce) { .bf-top::before, .bf-top__w { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .bf-top, .bf-top__trk, .bf-top__l i { animation: none; } }
 </style>
 </head>
 <body class="bf-on">
-<div class="bf-top" role="region" aria-label="Акция Black Friday"><span class="bf-top__w">BLACK FRIDAY</span><span class="bf-top__p">−20&nbsp;%</span><span class="bf-top__t">на все виды работ при записи на Сб / Вс</span><span class="bf-top__m">+ бонусы · до 31.12</span><a class="bf-top__b" href="#zapis">Подробнее</a><button class="bf-top__x" type="button" aria-label="Скрыть">×</button></div>
+<div class="bf-top" role="region" aria-label="Акция Black Friday"><a class="bf-top__l" href="#zapis"><i></i>BLACK FRIDAY</a><a class="bf-top__run" href="#zapis" aria-label="Условия акции"><span class="bf-top__trk"><span><b>−20 % на все виды работ</b> при записи на Сб / Вс</span><span>Компьютерная диагностика, ТО, текущий ремонт, запчасти</span><span><b>Бесплатно:</b> диагностика подвески и проверка жидкостей</span><span><b>−5 % навсегда</b> на дальнейшее обслуживание</span><span>Сертификат на зарядку <b>FOREVO</b> первым 50 владельцам электромобилей</span><span>Только до 31 декабря</span><span><b>−20 % на все виды работ</b> при записи на Сб / Вс</span><span>Компьютерная диагностика, ТО, текущий ремонт, запчасти</span><span><b>Бесплатно:</b> диагностика подвески и проверка жидкостей</span><span><b>−5 % навсегда</b> на дальнейшее обслуживание</span><span>Сертификат на зарядку <b>FOREVO</b> первым 50 владельцам электромобилей</span><span>Только до 31 декабря</span></span></a><a class="bf-top__b" href="#zapis">Записаться на выходной</a><button class="bf-top__x" type="button" aria-label="Скрыть">×</button></div>
 <script>document.querySelector('.bf-top__x').onclick=function(){document.querySelector('.bf-top').remove();document.body.classList.remove('bf-on');};</script>
 <header class="hdr" id="top"><div class="wrap">
   <div class="hdr__in">
