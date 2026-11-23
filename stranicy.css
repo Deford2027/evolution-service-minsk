@@ -304,3 +304,7 @@ figure.w-stack > .w-photo { max-height: none; aspect-ratio: 4 / 3; }
 .hero--plain:has(.legal) .legal { max-width: none; }
 /* меню на светлом фоне – сразу в «прокрученном» тёмном виде */
 body:has(.hero--plain .legal) .hdr__in { background: rgba(17,17,17,.9); border-color: rgba(255,255,255,.1); }
+
+/* Black Friday: полоса над шапкой сдвигает светлые страницы */
+body.bf-on .hero--plain .wrap { padding-top: 176px; }
+@media (max-width: 767px) { body.bf-on .hero--plain .wrap { padding-top: 140px; } }
