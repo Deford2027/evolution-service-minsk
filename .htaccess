@@ -3,6 +3,13 @@ Options -Indexes
 AddDefaultCharset utf-8
 RewriteEngine On
 
+# HTTP → HTTPS (за nginx хостинга схема приходит в X-Forwarded-Proto). Пока только тест;
+# боевой evolutioncarservice.com добавить сюда после выпуска сертификата.
+RewriteCond %{HTTP_HOST} ^(www\.)?test\.evolutioncarservice\.com$ [NC]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://test.evolutioncarservice.com/$1 [R=301,L]
+
 # Боевой домен: www → без www (как было на Тильде). HTTP → HTTPS включить после выпуска сертификата на evolutioncarservice.com
 RewriteCond %{HTTP_HOST} ^www\.evolutioncarservice\.com$ [NC]
 RewriteRule ^(.*)$ https://evolutioncarservice.com/$1 [R=301,L]
