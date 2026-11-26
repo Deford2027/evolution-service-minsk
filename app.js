@@ -121,7 +121,9 @@
   var zapForm = $('#zapis form[data-form]'), pop = null, popBox = null, popBack = null;
   if (zapForm) {
     pop = document.createElement('div'); pop.className = 'pop'; pop.setAttribute('aria-hidden', 'true');
-    pop.innerHTML = '<div class="pop__bg" data-pop-close></div><div class="pop__box" role="dialog" aria-modal="true" aria-labelledby="pop-h"><button class="pop__x" type="button" data-pop-close aria-label="Закрыть">×</button><b class="pop__h" id="pop-h"></b><p class="pop__sub">Оставьте телефон – перезвоним, уточним машину и подберём удобное время.</p></div>';
+    pop.innerHTML = '<div class="pop__bg" data-pop-close></div><div class="pop__box" role="dialog" aria-modal="true" aria-labelledby="pop-h"><button class="pop__x" type="button" data-pop-close aria-label="Закрыть">×</button><span class="pop__tag"><i></i>Black Friday · до 31 декабря</span><b class="pop__h" id="pop-h"></b><p class="pop__sub"></p>'
+      + '<ul class="pop__promo"><li>Компьютерная диагностика, ТО, текущий ремонт, запчасти</li><li><b>Бесплатно:</b> диагностика подвески и проверка жидкостей</li>'
+      + '<li><b>−5 % навсегда</b> на дальнейшее обслуживание</li><li>Сертификат на зарядку <b>FOREVO</b> первым 50 владельцам электромобилей</li></ul></div>';
     popBox = $('.pop__box', pop);
     var pf = zapForm.cloneNode(true);
     pf.classList.remove('w-form', 'form--row'); pf.classList.add('pop__form');
@@ -134,9 +136,15 @@
     popBox.appendChild(popCall);
     document.body.appendChild(pop);
   }
-  function popSet(o, title) {
+  // Окно акции Black Friday (все ссылки из полосы .bf-top): свой заголовок, условия списком, пометка в заявке
+  var POP_SUB = 'Оставьте телефон – перезвоним, уточним машину и подберём удобное время.';
+  function popSet(o, title, bf) {
     if (!pop) return;
-    if (o) { popBack = document.activeElement; $('#pop-h').textContent = title || 'Записаться на сервис'; }
+    if (o) {
+      popBack = document.activeElement; pop.classList.toggle('pop--bf', !!bf);
+      $('#pop-h').textContent = bf ? '−20 % на все виды работ в выходные' : (title || 'Записаться на сервис');
+      $('.pop__sub', pop).textContent = bf ? 'Запишитесь на субботу или воскресенье – перезвоним и подтвердим время.' : POP_SUB;
+    }
     pop.classList.toggle('open', o); pop.setAttribute('aria-hidden', !o);
     document.documentElement.classList.toggle('pop-lock', o);
     if (o) setTimeout(function () { var i = $('input:not([type=checkbox])', pop); if (i && !$('.sent', pop)) i.focus({ preventScroll: true }); }, 80);
@@ -146,8 +154,9 @@
     var a = e.target.closest('a[href="#zapis"], a[href="/evolution-service-minsk/#zapis"]');
     if (a && pop && !a.closest('.pop') && !a.closest('#zapis')) {
       e.preventDefault(); mgSet(false);
-      var t = a.textContent.replace(/\s+/g, ' ').trim();
-      setTimeout(function () { popSet(true, t); }, 0);
+      var t = a.textContent.replace(/\s+/g, ' ').trim(), bf = !!a.closest('.bf-top');
+      if (t.length > 60) t = '';
+      setTimeout(function () { popSet(true, t, bf); }, 0);
       return;
     }
     if (e.target.closest('[data-pop-close]')) popSet(false);
@@ -199,7 +208,8 @@
         var l = el.closest('label'); fields[el.getAttribute('aria-label') || el.placeholder || (l && l.textContent.trim()) || el.name] = el.value.trim();
       });
       var hp = $('input[name=website]', f), popH = f.closest('.pop') && $('#pop-h');
-      var data = { form: (popH ? popH.textContent + ' (окно)' : btnText.trim()), name: nm ? nm.value.trim() : '', phone: tel.value,
+      if (popH && pop.classList.contains('pop--bf')) fields['Акция'] = 'Black Friday: −20 % при записи на Сб / Вс';
+      var data = { form: (popH ? (pop.classList.contains('pop--bf') ? 'Black Friday: запись на выходной' : popH.textContent) + ' (окно)' : btnText.trim()), name: nm ? nm.value.trim() : '', phone: tel.value,
         fields: fields, title: document.title, url: location.href, website: hp ? hp.value : '',
         referrer: trail.referrer || '', utm: trail.utm || '', visits: trail.visits || 1, journey: (trail.journey || []).join('|') };
       var err = $('.send-err', f); if (err) err.remove();
