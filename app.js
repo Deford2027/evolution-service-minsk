@@ -144,6 +144,8 @@
       popBack = document.activeElement; pop.classList.toggle('pop--bf', !!bf);
       $('#pop-h').textContent = bf ? '−20 % на все виды работ в выходные' : (title || 'Записаться на сервис');
       $('.pop__sub', pop).textContent = bf ? 'Запишитесь на субботу или воскресенье – перезвоним и подтвердим время.' : POP_SUB;
+      var pb = $('.pop__form button[type=submit]', pop);
+      if (pb && pb.textContent !== 'Отправляем…') { pb.dataset.t = pb.dataset.t || pb.textContent; pb.textContent = bf ? 'Записаться на выходной' : pb.dataset.t; }
     }
     pop.classList.toggle('open', o); pop.setAttribute('aria-hidden', !o);
     document.documentElement.classList.toggle('pop-lock', o);
