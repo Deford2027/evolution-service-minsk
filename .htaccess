@@ -1,6 +1,7 @@
 # Хостинг hoster.by (Apache). На GitHub Pages этот файл не работает – только на хостинге.
 Options -Indexes
 AddDefaultCharset utf-8
+ErrorDocument 404 /404.html
 RewriteEngine On
 
 # HTTP → HTTPS (за nginx хостинга схема приходит в X-Forwarded-Proto). Пока только тест;
@@ -14,29 +15,30 @@ RewriteRule ^(.*)$ https://test.evolutioncarservice.com/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\.evolutioncarservice\.com$ [NC]
 RewriteRule ^(.*)$ https://evolutioncarservice.com/$1 [R=301,L]
 
-# Старые адреса Тильды → новые страницы (301, чтобы не потерять позиции в поиске)
-RewriteRule ^zeekr001/?$ /brands/zeekr/001/ [R=301,L]
-RewriteRule ^zeekrx/?$ /brands/zeekr/x/ [R=301,L]
-RewriteRule ^zeekr009/?$ /brands/zeekr/009/ [R=301,L]
-RewriteRule ^zeekr11/?$ /brands/zeekr/009/ [R=301,L]
-RewriteRule ^avatr-11/?$ /brands/avatr/11/ [R=301,L]
-RewriteRule ^lixiangl7/?$ /brands/lixiang/l7/ [R=301,L]
-RewriteRule ^lixiangl8/?$ /brands/lixiang/l8/ [R=301,L]
-RewriteRule ^lixiangl9/?$ /brands/lixiang/l9/ [R=301,L]
-RewriteRule ^voyah-dreamer/?$ /brands/voyah/dream/ [R=301,L]
-RewriteRule ^voyahfree/?$ /brands/voyah/free/ [R=301,L]
-RewriteRule ^geelymonjaro/?$ /brands/geely/monjaro/ [R=301,L]
-RewriteRule ^bydhan/?$ /brands/byd/han/ [R=301,L]
-RewriteRule ^bydsong/?$ /brands/byd/song-plus/ [R=301,L]
-RewriteRule ^bydtang/?$ /brands/byd/tang/ [R=301,L]
-RewriteRule ^catalog/?$ /brands/ [R=301,L]
-RewriteRule ^obzor/?$ /brands/ [R=301,L]
-RewriteRule ^news/?$ /blog/ [R=301,L]
-RewriteRule ^termsofuse/?$ /terms-of-use/ [R=301,L]
-RewriteRule ^privacypolicy/?$ /privacy-policy/ [R=301,L]
-RewriteRule ^invite/?$ /about/ [R=301,L]
-RewriteRule ^franchise/?$ /about/ [R=301,L]
-RewriteRule ^thanks/?$ / [R=301,L]
+# Старые адреса Тильды → новые страницы (301, чтобы не потерять позиции в поиске).
+# Сразу на https://, иначе за nginx хостинга получается два перехода (http, потом https).
+RewriteRule ^zeekr001/?$ https://%{HTTP_HOST}/brands/zeekr/001/ [R=301,L]
+RewriteRule ^zeekrx/?$ https://%{HTTP_HOST}/brands/zeekr/x/ [R=301,L]
+RewriteRule ^zeekr009/?$ https://%{HTTP_HOST}/brands/zeekr/009/ [R=301,L]
+RewriteRule ^zeekr11/?$ https://%{HTTP_HOST}/brands/zeekr/009/ [R=301,L]
+RewriteRule ^avatr-11/?$ https://%{HTTP_HOST}/brands/avatr/11/ [R=301,L]
+RewriteRule ^lixiangl7/?$ https://%{HTTP_HOST}/brands/lixiang/l7/ [R=301,L]
+RewriteRule ^lixiangl8/?$ https://%{HTTP_HOST}/brands/lixiang/l8/ [R=301,L]
+RewriteRule ^lixiangl9/?$ https://%{HTTP_HOST}/brands/lixiang/l9/ [R=301,L]
+RewriteRule ^voyah-dreamer/?$ https://%{HTTP_HOST}/brands/voyah/dream/ [R=301,L]
+RewriteRule ^voyahfree/?$ https://%{HTTP_HOST}/brands/voyah/free/ [R=301,L]
+RewriteRule ^geelymonjaro/?$ https://%{HTTP_HOST}/brands/geely/monjaro/ [R=301,L]
+RewriteRule ^bydhan/?$ https://%{HTTP_HOST}/brands/byd/han/ [R=301,L]
+RewriteRule ^bydsong/?$ https://%{HTTP_HOST}/brands/byd/song-plus/ [R=301,L]
+RewriteRule ^bydtang/?$ https://%{HTTP_HOST}/brands/byd/tang/ [R=301,L]
+RewriteRule ^catalog/?$ https://%{HTTP_HOST}/brands/ [R=301,L]
+RewriteRule ^obzor/?$ https://%{HTTP_HOST}/brands/ [R=301,L]
+RewriteRule ^news/?$ https://%{HTTP_HOST}/blog/ [R=301,L]
+RewriteRule ^termsofuse/?$ https://%{HTTP_HOST}/terms-of-use/ [R=301,L]
+RewriteRule ^privacypolicy/?$ https://%{HTTP_HOST}/privacy-policy/ [R=301,L]
+RewriteRule ^invite/?$ https://%{HTTP_HOST}/about/ [R=301,L]
+RewriteRule ^franchise/?$ https://%{HTTP_HOST}/about/ [R=301,L]
+RewriteRule ^thanks/?$ https://%{HTTP_HOST}/ [R=301,L]
 
 # Кэш статики
 <IfModule mod_expires.c>
